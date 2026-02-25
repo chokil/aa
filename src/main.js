@@ -257,8 +257,8 @@ function initContactForm() {
     form.innerHTML = `
       <div class="form-success">
         <div class="form-success-icon">✨</div>
-        <h3>Thank you, ${name || 'friend'}!</h3>
-        <p>We'll be in touch within 24 hours to discuss your project.</p>
+        <h3>${name || ''}さん、ありがとうございます！</h3>
+        <p>24時間以内にプロジェクトについてご連絡いたします。</p>
       </div>
     `;
   });
