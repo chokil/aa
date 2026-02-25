@@ -2,9 +2,10 @@
 
 ## Cursor Cloud specific instructions
 
-This repository is currently empty (only a `README.md` placeholder). There are no applications, services, dependencies, or build systems to run.
+This is a Vite-based vanilla JS/CSS website (no framework). Single service.
 
-When application code is added to this repository, update this section with:
-- How to install dependencies
-- How to run, build, lint, and test the application(s)
-- Any non-obvious development caveats
+- **Dev server**: `npm run dev` (Vite on port 5173)
+- **Build**: `npm run build` (outputs to `dist/`)
+- **Preview prod build**: `npm run preview` (port 4173)
+- No linter, test framework, or CI pipeline currently configured.
+- Google Fonts are loaded from CDN; offline environments will fall back to system fonts.
