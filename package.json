@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "lint": "echo 'No linter configured yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chokil/aa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chokil/aa/issues"
+  },
+  "homepage": "https://github.com/chokil/aa#readme",
+  "devDependencies": {
+    "vite": "^7.3.1"
+  }
+}
