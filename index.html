@@ -3,419 +3,454 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXUS — Digital Experience Studio</title>
+  <meta name="description" content="翠光 SUIGO — 心に残るデジタル体験を創造するクリエイティブスタジオ" />
+  <title>翠光 SUIGO — Digital Experience Studio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233ecf8e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%2307080c' font-family='sans-serif' font-weight='bold'>翠</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
-  <div id="cursor-glow"></div>
-  <canvas id="particle-canvas"></canvas>
+  <div id="cursor-glow" aria-hidden="true"></div>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- Navigation -->
-  <nav class="glass-nav" id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo">
-        <span class="logo-icon">◆</span>
-        <span class="logo-text">NEXUS</span>
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav-inner">
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#works" class="mobile-nav-link">Works</a>
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#process" class="mobile-nav-link">Process</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <a href="#contact" class="btn-primary mobile-nav-cta">
+        <span>プロジェクトを相談する</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="#about" data-text="About">About</a></li>
-        <li><a href="#services" data-text="Services">Services</a></li>
-        <li><a href="#work" data-text="Work">Work</a></li>
-        <li><a href="#testimonials" data-text="Voices">Voices</a></li>
-        <li><a href="#contact" data-text="Contact">Contact</a></li>
-      </ul>
-      <button class="nav-cta magnetic-btn" data-strength="20">
-        <span>Let's Talk</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M7 17L17 7M17 7H7M17 7V17"/>
-        </svg>
-      </button>
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero-bg-shapes">
-      <div class="aurora aurora-1"></div>
-      <div class="aurora aurora-2"></div>
-      <div class="aurora aurora-3"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge reveal-up">
-        <span class="badge-dot"></span>
-        <span>Now accepting projects for 2026</span>
-      </div>
-      <h1 class="hero-title">
-        <span class="title-line reveal-up" style="--delay: 0.1s">We craft</span>
-        <span class="title-line title-accent reveal-up" style="--delay: 0.2s">
-          <em>digital</em> experiences
-        </span>
-        <span class="title-line reveal-up" style="--delay: 0.3s">that inspire.</span>
-      </h1>
-      <p class="hero-description reveal-up" style="--delay: 0.5s">
-        Award-winning studio blending cutting-edge technology with<br>
-        bold creativity to build immersive digital products.
-      </p>
-      <div class="hero-actions reveal-up" style="--delay: 0.6s">
-        <a href="#work" class="btn-primary magnetic-btn" data-strength="15">
-          <span>View Our Work</span>
-          <div class="btn-shimmer"></div>
-        </a>
-        <a href="#about" class="btn-ghost magnetic-btn" data-strength="15">
-          <span>Our Process</span>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12l4 4 4-4"/>
-          </svg>
-        </a>
-      </div>
-      <div class="hero-stats reveal-up" style="--delay: 0.8s">
-        <div class="stat">
-          <span class="stat-number" data-target="150">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Projects Delivered</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number" data-target="40">0</span><span class="stat-suffix">+</span>
-          <span class="stat-label">Global Clients</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number" data-target="12">0</span>
-          <span class="stat-label">Awards Won</span>
-        </div>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="section about" id="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal-up">[ 01 — ABOUT ]</span>
-        <h2 class="section-title reveal-up">
-          We don't just build websites.<br>
-          <span class="text-gradient">We build movements.</span>
-        </h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text reveal-up">
-          <p class="lead">
-            NEXUS is a multidisciplinary digital studio where strategy, design, and technology converge
-            to create experiences that resonate deeply with audiences.
-          </p>
-          <p>
-            Founded in Tokyo, we combine Japanese precision with global creative vision.
-            Every pixel, every interaction, every line of code serves a purpose — to elevate brands
-            beyond the ordinary and into the extraordinary.
-          </p>
-        </div>
-        <div class="about-values">
-          <div class="value-card glass-card reveal-up" style="--delay: 0.1s">
-            <div class="value-icon">✦</div>
-            <h3>Design-Led</h3>
-            <p>Beauty isn't superficial — it's the foundation of trust and engagement.</p>
-          </div>
-          <div class="value-card glass-card reveal-up" style="--delay: 0.2s">
-            <div class="value-icon">◈</div>
-            <h3>Tech-Forward</h3>
-            <p>We push boundaries with the latest frameworks, animations, and AI-driven tools.</p>
-          </div>
-          <div class="value-card glass-card reveal-up" style="--delay: 0.3s">
-            <div class="value-icon">⬡</div>
-            <h3>Human-Centric</h3>
-            <p>Technology serves people. We design for emotions, not just screens.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="section services" id="services">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal-up">[ 02 — SERVICES ]</span>
-        <h2 class="section-title reveal-up">
-          Capabilities that<br>
-          <span class="text-gradient">transform visions.</span>
-        </h2>
-      </div>
-      <div class="services-list">
-        <div class="service-item reveal-up" style="--delay: 0.1s">
-          <div class="service-number">01</div>
-          <div class="service-content">
-            <h3>Brand Strategy & Identity</h3>
-            <p>Crafting brand narratives that cut through the noise and leave lasting impressions.</p>
-          </div>
-          <div class="service-tags">
-            <span>Brand Audit</span><span>Visual Identity</span><span>Guidelines</span>
-          </div>
-          <div class="service-arrow">→</div>
-        </div>
-        <div class="service-item reveal-up" style="--delay: 0.2s">
-          <div class="service-number">02</div>
-          <div class="service-content">
-            <h3>Web Design & Development</h3>
-            <p>Pixel-perfect interfaces powered by scalable, performant code architectures.</p>
-          </div>
-          <div class="service-tags">
-            <span>UI/UX Design</span><span>Frontend</span><span>CMS</span>
-          </div>
-          <div class="service-arrow">→</div>
-        </div>
-        <div class="service-item reveal-up" style="--delay: 0.3s">
-          <div class="service-number">03</div>
-          <div class="service-content">
-            <h3>Interactive Experiences</h3>
-            <p>Immersive WebGL, 3D, and motion-driven experiences that captivate and engage.</p>
-          </div>
-          <div class="service-tags">
-            <span>WebGL</span><span>3D</span><span>Animation</span>
-          </div>
-          <div class="service-arrow">→</div>
-        </div>
-        <div class="service-item reveal-up" style="--delay: 0.4s">
-          <div class="service-number">04</div>
-          <div class="service-content">
-            <h3>Digital Products & Apps</h3>
-            <p>End-to-end product design and engineering from concept to launch and beyond.</p>
-          </div>
-          <div class="service-tags">
-            <span>SaaS</span><span>Mobile</span><span>AI Integration</span>
-          </div>
-          <div class="service-arrow">→</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work / Portfolio Section -->
-  <section class="section work" id="work">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal-up">[ 03 — SELECTED WORK ]</span>
-        <h2 class="section-title reveal-up">
-          Projects that<br>
-          <span class="text-gradient">speak volumes.</span>
-        </h2>
-      </div>
-      <div class="work-grid">
-        <article class="work-card reveal-up" style="--delay: 0.1s; --card-color: #6c5ce7;">
-          <div class="work-card-image">
-            <div class="work-placeholder" style="--bg: linear-gradient(135deg, #6c5ce7, #a29bfe);">
-              <span class="work-placeholder-icon">◆</span>
-            </div>
-            <div class="work-card-overlay"></div>
-          </div>
-          <div class="work-card-info">
-            <span class="work-tag">Branding / Web</span>
-            <h3>Luminary Finance</h3>
-            <p>Reimagining fintech with a human-first brand experience</p>
-          </div>
-        </article>
-        <article class="work-card reveal-up" style="--delay: 0.2s; --card-color: #00b894;">
-          <div class="work-card-image">
-            <div class="work-placeholder" style="--bg: linear-gradient(135deg, #00b894, #55efc4);">
-              <span class="work-placeholder-icon">◈</span>
-            </div>
-            <div class="work-card-overlay"></div>
-          </div>
-          <div class="work-card-info">
-            <span class="work-tag">Interactive / 3D</span>
-            <h3>EcoSphere VR</h3>
-            <p>An immersive virtual experience for environmental awareness</p>
-          </div>
-        </article>
-        <article class="work-card work-card-wide reveal-up" style="--delay: 0.3s; --card-color: #fd79a8;">
-          <div class="work-card-image">
-            <div class="work-placeholder" style="--bg: linear-gradient(135deg, #fd79a8, #e84393);">
-              <span class="work-placeholder-icon">⬡</span>
-            </div>
-            <div class="work-card-overlay"></div>
-          </div>
-          <div class="work-card-info">
-            <span class="work-tag">Product / Mobile</span>
-            <h3>Harmony Health</h3>
-            <p>AI-powered wellness platform with 2M+ active users across 30 countries</p>
-          </div>
-        </article>
-        <article class="work-card reveal-up" style="--delay: 0.4s; --card-color: #fdcb6e;">
-          <div class="work-card-image">
-            <div class="work-placeholder" style="--bg: linear-gradient(135deg, #fdcb6e, #f39c12);">
-              <span class="work-placeholder-icon">✦</span>
-            </div>
-            <div class="work-card-overlay"></div>
-          </div>
-          <div class="work-card-info">
-            <span class="work-tag">Web / E-Commerce</span>
-            <h3>Artisan Collective</h3>
-            <p>Luxury marketplace connecting global artisans with curated audiences</p>
-          </div>
-        </article>
-        <article class="work-card reveal-up" style="--delay: 0.5s; --card-color: #74b9ff;">
-          <div class="work-card-image">
-            <div class="work-placeholder" style="--bg: linear-gradient(135deg, #74b9ff, #0984e3);">
-              <span class="work-placeholder-icon">◆</span>
-            </div>
-            <div class="work-card-overlay"></div>
-          </div>
-          <div class="work-card-info">
-            <span class="work-tag">Campaign / Interactive</span>
-            <h3>Stellar Space</h3>
-            <p>Award-winning campaign for a next-gen space tourism brand</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Marquee / Infinite Scroll -->
-  <div class="marquee-section">
-    <div class="marquee-track">
-      <div class="marquee-content">
-        <span>Design</span><span class="marquee-dot">◆</span>
-        <span>Develop</span><span class="marquee-dot">◆</span>
-        <span>Deliver</span><span class="marquee-dot">◆</span>
-        <span>Delight</span><span class="marquee-dot">◆</span>
-        <span>Design</span><span class="marquee-dot">◆</span>
-        <span>Develop</span><span class="marquee-dot">◆</span>
-        <span>Deliver</span><span class="marquee-dot">◆</span>
-        <span>Delight</span><span class="marquee-dot">◆</span>
-      </div>
-    </div>
+    </nav>
   </div>
 
-  <!-- Testimonials Section -->
-  <section class="section testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag reveal-up">[ 04 — VOICES ]</span>
-        <h2 class="section-title reveal-up">
-          Words from those<br>
-          <span class="text-gradient">who believed.</span>
-        </h2>
-      </div>
-      <div class="testimonial-grid">
-        <blockquote class="testimonial-card glass-card reveal-up" style="--delay: 0.1s">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"NEXUS transformed our entire digital presence. The attention to detail and creative vision exceeded every expectation we had."</p>
-          <footer>
-            <div class="testimonial-avatar" style="--avatar-color: #6c5ce7;">S.T.</div>
-            <div>
-              <cite>Sakura Tanaka</cite>
-              <span>CEO, Luminary Finance</span>
-            </div>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-card glass-card reveal-up" style="--delay: 0.2s">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"Working with the NEXUS team was like watching artists and engineers create magic together. Our conversion rate increased by 340%."</p>
-          <footer>
-            <div class="testimonial-avatar" style="--avatar-color: #00b894;">M.C.</div>
-            <div>
-              <cite>Marcus Chen</cite>
-              <span>Founder, EcoSphere</span>
-            </div>
-          </footer>
-        </blockquote>
-        <blockquote class="testimonial-card glass-card reveal-up" style="--delay: 0.3s">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"They don't just deliver projects — they deliver experiences that make users fall in love with your brand. Truly world-class."</p>
-          <footer>
-            <div class="testimonial-avatar" style="--avatar-color: #fd79a8;">A.K.</div>
-            <div>
-              <cite>Aria Kim</cite>
-              <span>CMO, Harmony Health</span>
-            </div>
-          </footer>
-        </blockquote>
-      </div>
+  <!-- Navigation -->
+  <header class="site-header" id="navbar">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">翠</span>
+        <span class="logo-name">SUIGO</span>
+      </a>
+      <nav class="desktop-nav" aria-label="メインナビゲーション">
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="header-cta magnetic-btn" data-strength="18">
+        <span>相談する</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        </svg>
+      </a>
+      <button class="menu-toggle" id="mobile-menu-btn" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span>
+      </button>
     </div>
-  </section>
+  </header>
 
-  <!-- Contact / CTA Section -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <div class="contact-content">
-          <span class="section-tag reveal-up">[ 05 — CONTACT ]</span>
-          <h2 class="contact-title reveal-up">
-            Ready to create<br>something
-            <span class="text-gradient">extraordinary</span>?
-          </h2>
-          <p class="contact-desc reveal-up">
-            Tell us about your project and let's start crafting your next digital masterpiece.
-          </p>
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow reveal-up">
+          <span class="pulse-dot"></span>
+          <span>2026年 — 新規プロジェクト受付中</span>
         </div>
-        <form class="contact-form reveal-up" id="contact-form">
-          <div class="form-group">
-            <input type="text" id="name" placeholder=" " required autocomplete="off" />
-            <label for="name">Your Name</label>
-            <div class="form-line"></div>
+        <h1 class="hero-title">
+          <span class="title-row reveal-up" style="--delay: 0.05s">心に</span>
+          <span class="title-row title-highlight reveal-up" style="--delay: 0.15s">
+            <em>残る</em>体験を
+          </span>
+          <span class="title-row reveal-up" style="--delay: 0.25s">デザインする。</span>
+        </h1>
+        <p class="hero-lead reveal-up" style="--delay: 0.4s">
+          翠光は、ブランド戦略・UIデザイン・フロントエンド開発を<br class="hide-mobile">
+          一気通貫で手がけるデジタルクリエイティブスタジオです。
+        </p>
+        <div class="hero-actions reveal-up" style="--delay: 0.55s">
+          <a href="#works" class="btn-primary magnetic-btn" data-strength="15">
+            <span>制作実績を見る</span>
+            <div class="btn-shine"></div>
+          </a>
+          <a href="#about" class="btn-outline magnetic-btn" data-strength="15">
+            <span>スタジオについて</span>
+          </a>
+        </div>
+        <div class="hero-metrics reveal-up" style="--delay: 0.7s">
+          <div class="metric">
+            <span class="metric-value"><span class="stat-number" data-target="128">0</span><span class="metric-suffix">+</span></span>
+            <span class="metric-label">完了プロジェクト</span>
           </div>
-          <div class="form-group">
-            <input type="email" id="email" placeholder=" " required autocomplete="off" />
-            <label for="email">Email Address</label>
-            <div class="form-line"></div>
+          <div class="metric-divider"></div>
+          <div class="metric">
+            <span class="metric-value"><span class="stat-number" data-target="36">0</span><span class="metric-suffix">社</span></span>
+            <span class="metric-label">クライアント</span>
           </div>
-          <div class="form-group">
-            <textarea id="message" rows="4" placeholder=" " required></textarea>
-            <label for="message">Tell us about your project</label>
-            <div class="form-line"></div>
+          <div class="metric-divider"></div>
+          <div class="metric">
+            <span class="metric-value"><span class="stat-number" data-target="8">0</span><span class="metric-suffix">年</span></span>
+            <span class="metric-label">活動実績</span>
           </div>
-          <button type="submit" class="btn-primary magnetic-btn" data-strength="15">
-            <span>Send Message</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-            </svg>
-            <div class="btn-shimmer"></div>
-          </button>
-        </form>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-bar"></div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>Design</span><span class="marquee-sep">✦</span>
+          <span>Develop</span><span class="marquee-sep">✦</span>
+          <span>Deliver</span><span class="marquee-sep">✦</span>
+          <span>Delight</span><span class="marquee-sep">✦</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>Design</span><span class="marquee-sep">✦</span>
+          <span>Develop</span><span class="marquee-sep">✦</span>
+          <span>Deliver</span><span class="marquee-sep">✦</span>
+          <span>Delight</span><span class="marquee-sep">✦</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Footer -->
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-intro">
+          <span class="section-label reveal-up">01 — About</span>
+          <h2 class="section-heading reveal-up">
+            美しさと機能が<br>
+            <span class="gradient-text">調和する場所。</span>
+          </h2>
+        </div>
+        <div class="about-layout">
+          <div class="about-copy reveal-up">
+            <p class="about-lead">
+              私たちは「見た目だけの美しさ」ではなく、
+              ユーザーが自然に行動できる体験設計を大切にしています。
+            </p>
+            <p>
+              東京を拠点に、スタートアップから大手企業まで幅広いクライアントと協働。
+              戦略立案からデザイン、実装、運用改善まで、
+              プロジェクトの全工程をチーム一丸となって支えます。
+            </p>
+          </div>
+          <div class="about-cards">
+            <article class="info-card reveal-up" style="--delay: 0.1s">
+              <div class="info-card-icon">◈</div>
+              <h3>戦略から実装まで</h3>
+              <p>ブランドの本質を掘り下げ、デザインとコードで形にする一気通貫の制作体制。</p>
+            </article>
+            <article class="info-card reveal-up" style="--delay: 0.2s">
+              <div class="info-card-icon">✦</div>
+              <h3>細部へのこだわり</h3>
+              <p>タイポグラフィ、余白、マイクロインタラクション。すべてに意図を持って設計します。</p>
+            </article>
+            <article class="info-card reveal-up" style="--delay: 0.3s">
+              <div class="info-card-icon">⬡</div>
+              <h3>長期的なパートナー</h3>
+              <p>リリース後の改善・拡張まで伴走。ビジネスの成長に合わせた継続的なサポート。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section class="section works" id="works">
+      <div class="container">
+        <div class="section-intro section-intro-row">
+          <div>
+            <span class="section-label reveal-up">02 — Works</span>
+            <h2 class="section-heading reveal-up">
+              選ばれた<br>
+              <span class="gradient-text">制作実績。</span>
+            </h2>
+          </div>
+          <p class="section-desc reveal-up">ブランドの課題に向き合い、成果につながったプロジェクトをご紹介します。</p>
+        </div>
+        <div class="bento-grid">
+          <article class="bento-card bento-large reveal-up" style="--delay: 0.05s; --accent: #3ecf8e;">
+            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #1a3d2e 0%, #3ecf8e 100%);">
+              <span class="bento-icon">◆</span>
+            </div>
+            <div class="bento-body">
+              <span class="bento-tag">Branding / Web</span>
+              <h3>緑風テック</h3>
+              <p>サステナブルテック企業のブランドリニューアル。CV率 240% 向上。</p>
+            </div>
+          </article>
+          <article class="bento-card reveal-up" style="--delay: 0.1s; --accent: #6b8cff;">
+            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #1a2540 0%, #6b8cff 100%);">
+              <span class="bento-icon">◈</span>
+            </div>
+            <div class="bento-body">
+              <span class="bento-tag">SaaS / Product</span>
+              <h3>FlowDesk</h3>
+              <p>チーム向けワークフロー管理ツールのUI/UX設計とフロントエンド開発。</p>
+            </div>
+          </article>
+          <article class="bento-card reveal-up" style="--delay: 0.15s; --accent: #f0c987;">
+            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #3d3020 0%, #f0c987 100%);">
+              <span class="bento-icon">✦</span>
+            </div>
+            <div class="bento-body">
+              <span class="bento-tag">E-Commerce</span>
+              <h3>工房 灯</h3>
+              <p>職人の手仕事を伝えるECサイト。モバイル売上 3.2倍に成長。</p>
+            </div>
+          </article>
+          <article class="bento-card bento-wide reveal-up" style="--delay: 0.2s; --accent: #e87da0;">
+            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #3d1a2e 0%, #e87da0 100%);">
+              <span class="bento-icon">⬡</span>
+            </div>
+            <div class="bento-body">
+              <span class="bento-tag">Campaign / Interactive</span>
+              <h3>星降る夜に</h3>
+              <p>没入型Web体験キャンペーン。100万PV超え、業界賞を受賞。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-intro">
+          <span class="section-label reveal-up">03 — Services</span>
+          <h2 class="section-heading reveal-up">
+            提供する<br>
+            <span class="gradient-text">サービス。</span>
+          </h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal-up" style="--delay: 0.05s">
+            <span class="service-num">01</span>
+            <h3>ブランド &amp; ビジュアル</h3>
+            <p>ロゴ、カラーシステム、タイポグラフィ、ブランドガイドラインまで一貫して設計。</p>
+            <ul class="service-tags">
+              <li>Brand Identity</li>
+              <li>Art Direction</li>
+              <li>Design System</li>
+            </ul>
+          </article>
+          <article class="service-card reveal-up" style="--delay: 0.15s">
+            <span class="service-num">02</span>
+            <h3>Webデザイン &amp; 開発</h3>
+            <p>レスポンシブ対応のUI設計から、高速で保守性の高いフロントエンド実装まで。</p>
+            <ul class="service-tags">
+              <li>UI/UX Design</li>
+              <li>Frontend Dev</li>
+              <li>Performance</li>
+            </ul>
+          </article>
+          <article class="service-card reveal-up" style="--delay: 0.25s">
+            <span class="service-num">03</span>
+            <h3>インタラクティブ体験</h3>
+            <p>アニメーション、3D、スクロール演出で、記憶に残るデジタル体験を創出。</p>
+            <ul class="service-tags">
+              <li>Motion Design</li>
+              <li>WebGL / 3D</li>
+              <li>Micro UX</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-intro">
+          <span class="section-label reveal-up">04 — Process</span>
+          <h2 class="section-heading reveal-up">
+            確かな成果へ導く<br>
+            <span class="gradient-text">4つのステップ。</span>
+          </h2>
+        </div>
+        <ol class="process-steps">
+          <li class="process-step reveal-up" style="--delay: 0.05s">
+            <span class="step-num">01</span>
+            <div class="step-content">
+              <h3>Discover</h3>
+              <p>ビジネス目標とユーザー課題を深く理解し、プロジェクトの方向性を定義します。</p>
+            </div>
+          </li>
+          <li class="process-step reveal-up" style="--delay: 0.15s">
+            <span class="step-num">02</span>
+            <div class="step-content">
+              <h3>Design</h3>
+              <p>ワイヤーフレームからビジュアルデザインまで、段階的にブラッシュアップ。</p>
+            </div>
+          </li>
+          <li class="process-step reveal-up" style="--delay: 0.25s">
+            <span class="step-num">03</span>
+            <div class="step-content">
+              <h3>Build</h3>
+              <p>最新技術で高品質なコードを実装。パフォーマンスとアクセシビリティを重視。</p>
+            </div>
+          </li>
+          <li class="process-step reveal-up" style="--delay: 0.35s">
+            <span class="step-num">04</span>
+            <div class="step-content">
+              <h3>Evolve</h3>
+              <p>データに基づく改善提案と継続的なメンテナンスで、長期的な成長を支援。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section voices" id="voices">
+      <div class="container">
+        <div class="section-intro">
+          <span class="section-label reveal-up">05 — Voices</span>
+          <h2 class="section-heading reveal-up">
+            クライアントの<br>
+            <span class="gradient-text">声。</span>
+          </h2>
+        </div>
+        <div class="voices-grid">
+          <blockquote class="voice-card reveal-up" style="--delay: 0.05s">
+            <div class="voice-stars">★★★★★</div>
+            <p>「デザインの美しさだけでなく、ビジネス成果まで考えてくれる rare なパートナーです。リニューアル後の問い合わせ数が3倍になりました。」</p>
+            <footer>
+              <div class="voice-avatar" style="--color: #3ecf8e;">Y.K.</div>
+              <div>
+                <cite>木村 裕子</cite>
+                <span>代表取締役 / 緑風テック</span>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="voice-card reveal-up" style="--delay: 0.15s">
+            <div class="voice-stars">★★★★★</div>
+            <p>「細部へのこだわりが素晴らしく、チーム全体のプロダクト品質が一段上がりました。コミュニケーションも非常にスムーズでした。」</p>
+            <footer>
+              <div class="voice-avatar" style="--color: #6b8cff;">T.S.</div>
+              <div>
+                <cite>佐藤 健太</cite>
+                <span>プロダクトマネージャー / FlowDesk</span>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="voice-card reveal-up" style="--delay: 0.25s">
+            <div class="voice-stars">★★★★★</div>
+            <p>「職人の想いをデジタルで表現する難しい依頼でしたが、期待を大きく超えるサイトが完成。スタッフ全員が感動しています。」</p>
+            <footer>
+              <div class="voice-avatar" style="--color: #f0c987;">M.A.</div>
+              <div>
+                <cite>秋山 美咲</cite>
+                <span>オーナー / 工房 灯</span>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <span class="section-label reveal-up">06 — Contact</span>
+            <h2 class="contact-heading reveal-up">
+              次のプロジェクトを、<br>
+              <span class="gradient-text">一緒に。</span>
+            </h2>
+            <p class="contact-lead reveal-up">
+              ご相談・お見積りは無料です。まずはお気軽にお問い合わせください。
+              通常2営業日以内にご返信いたします。
+            </p>
+            <div class="contact-details reveal-up">
+              <div class="contact-detail">
+                <span class="detail-label">Email</span>
+                <span>hello@suigo.studio</span>
+              </div>
+              <div class="contact-detail">
+                <span class="detail-label">Location</span>
+                <span>東京都渋谷区</span>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form reveal-up" id="contact-form" style="--delay: 0.1s">
+            <div class="field">
+              <input type="text" id="name" placeholder=" " required autocomplete="name" />
+              <label for="name">お名前</label>
+              <span class="field-line"></span>
+            </div>
+            <div class="field">
+              <input type="email" id="email" placeholder=" " required autocomplete="email" />
+              <label for="email">メールアドレス</label>
+              <span class="field-line"></span>
+            </div>
+            <div class="field">
+              <textarea id="message" rows="4" placeholder=" " required></textarea>
+              <label for="message">プロジェクトの概要</label>
+              <span class="field-line"></span>
+            </div>
+            <button type="submit" class="btn-primary magnetic-btn" data-strength="15">
+              <span>送信する</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+              <div class="btn-shine"></div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
+      <div class="footer-top">
         <div class="footer-brand">
           <a href="#" class="logo">
-            <span class="logo-icon">◆</span>
-            <span class="logo-text">NEXUS</span>
+            <span class="logo-mark">翠</span>
+            <span class="logo-name">SUIGO</span>
           </a>
-          <p>Crafting digital experiences that inspire.</p>
+          <p>心に残るデジタル体験を創造するクリエイティブスタジオ。</p>
         </div>
-        <div class="footer-links">
+        <div class="footer-nav">
           <div class="footer-col">
             <h4>Studio</h4>
             <a href="#about">About</a>
+            <a href="#works">Works</a>
             <a href="#services">Services</a>
-            <a href="#work">Work</a>
             <a href="#contact">Contact</a>
           </div>
           <div class="footer-col">
             <h4>Social</h4>
-            <a href="#">Twitter / X</a>
+            <a href="#">X (Twitter)</a>
             <a href="#">Instagram</a>
-            <a href="#">Dribbble</a>
-            <a href="#">LinkedIn</a>
+            <a href="#">note</a>
+            <a href="#">GitHub</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 NEXUS Studio. All rights reserved.</p>
-        <p>Designed & Built with ♥ in Tokyo</p>
+        <p>&copy; 2026 翠光 SUIGO Studio. All rights reserved.</p>
+        <p>Designed with care in Tokyo</p>
       </div>
     </div>
   </footer>
