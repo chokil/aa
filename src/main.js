@@ -1,5 +1,5 @@
 /* ============================================
-   NEXUS — Interactive Engine
+   翠光 SUIGO — Interactive Engine
    ============================================ */
 
 // --- Particle System ---
@@ -21,16 +21,16 @@ class ParticleSystem {
   }
 
   init() {
-    const count = Math.min(80, Math.floor((this.width * this.height) / 15000));
+    const count = Math.min(70, Math.floor((this.width * this.height) / 16000));
     this.particles = [];
     for (let i = 0; i < count; i++) {
       this.particles.push({
         x: Math.random() * this.width,
         y: Math.random() * this.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.5 + 0.1,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        radius: Math.random() * 1.2 + 0.4,
+        opacity: Math.random() * 0.4 + 0.08,
       });
     }
   }
@@ -61,10 +61,10 @@ class ParticleSystem {
       const dx = this.mouse.x - p.x;
       const dy = this.mouse.y - p.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 150) {
-        const force = (150 - dist) / 150;
-        p.vx -= (dx / dist) * force * 0.02;
-        p.vy -= (dy / dist) * force * 0.02;
+      if (dist < 140 && dist > 0) {
+        const force = (140 - dist) / 140;
+        p.vx -= (dx / dist) * force * 0.018;
+        p.vy -= (dy / dist) * force * 0.018;
       }
 
       p.vx *= 0.99;
@@ -72,7 +72,7 @@ class ParticleSystem {
 
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      this.ctx.fillStyle = `rgba(108, 92, 231, ${p.opacity})`;
+      this.ctx.fillStyle = `rgba(62, 207, 142, ${p.opacity})`;
       this.ctx.fill();
     }
 
@@ -83,12 +83,12 @@ class ParticleSystem {
         const dx = a.x - b.x;
         const dy = a.y - b.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          const opacity = ((120 - dist) / 120) * 0.12;
+        if (dist < 110) {
+          const opacity = ((110 - dist) / 110) * 0.1;
           this.ctx.beginPath();
           this.ctx.moveTo(a.x, a.y);
           this.ctx.lineTo(b.x, b.y);
-          this.ctx.strokeStyle = `rgba(108, 92, 231, ${opacity})`;
+          this.ctx.strokeStyle = `rgba(107, 140, 255, ${opacity})`;
           this.ctx.lineWidth = 0.5;
           this.ctx.stroke();
         }
@@ -104,8 +104,10 @@ function initCursorGlow() {
   const glow = document.getElementById('cursor-glow');
   if (!glow) return;
 
-  let mouseX = 0, mouseY = 0;
-  let glowX = 0, glowY = 0;
+  let mouseX = 0;
+  let mouseY = 0;
+  let glowX = 0;
+  let glowY = 0;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
@@ -115,8 +117,8 @@ function initCursorGlow() {
   function update() {
     glowX += (mouseX - glowX) * 0.08;
     glowY += (mouseY - glowY) * 0.08;
-    glow.style.left = glowX + 'px';
-    glow.style.top = glowY + 'px';
+    glow.style.left = `${glowX}px`;
+    glow.style.top = `${glowY}px`;
     requestAnimationFrame(update);
   }
 
@@ -136,29 +138,23 @@ function initScrollReveal() {
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
   );
 
   elements.forEach((el) => observer.observe(el));
 }
 
-// --- Navbar Scroll Effect ---
+// --- Navbar Scroll ---
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
-  let lastScroll = 0;
-
   window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-
-    if (scroll > 50) {
+    if (window.scrollY > 40) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-
-    lastScroll = scroll;
   });
 }
 
@@ -166,10 +162,14 @@ function initNavbar() {
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+
       e.preventDefault();
-      const target = document.querySelector(anchor.getAttribute('href'));
+      const target = document.querySelector(href);
       if (target) {
-        const offset = 80;
+        closeMobileMenu();
+        const offset = 76;
         const position = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: position, behavior: 'smooth' });
       }
@@ -185,10 +185,8 @@ function initCounters() {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseInt(el.dataset.target);
-          animateCounter(el, target);
-          observer.unobserve(el);
+          animateCounter(entry.target, parseInt(entry.target.dataset.target, 10));
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -218,20 +216,17 @@ function animateCounter(el, target) {
 
 // --- Magnetic Buttons ---
 function initMagneticButtons() {
-  const buttons = document.querySelectorAll('.magnetic-btn');
-
-  buttons.forEach((btn) => {
-    const strength = parseInt(btn.dataset.strength) || 20;
-
+  document.querySelectorAll('.magnetic-btn').forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
+      const strength = parseInt(btn.dataset.strength, 10) || 20;
 
-      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
       const inner = btn.querySelector('span');
       if (inner) {
-        inner.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        inner.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
       }
     });
 
@@ -250,44 +245,81 @@ function initContactForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    const formData = new FormData(form);
-    const name = document.getElementById('name').value;
+    const name = document.getElementById('name')?.value;
 
     form.innerHTML = `
       <div class="form-success">
         <div class="form-success-icon">✨</div>
-        <h3>Thank you, ${name || 'friend'}!</h3>
-        <p>We'll be in touch within 24 hours to discuss your project.</p>
+        <h3>${name ? `${name} さん、ありがとうございます！` : 'お問い合わせありがとうございます！'}</h3>
+        <p>2営業日以内にご返信いたします。しばらくお待ちください。</p>
       </div>
     `;
   });
 }
 
-// --- Parallax on Scroll ---
+// --- Parallax ---
 function initParallax() {
-  const auroras = document.querySelectorAll('.aurora');
+  const orbs = document.querySelectorAll('.orb');
+  if (!orbs.length) return;
 
   window.addEventListener('scroll', () => {
     const scroll = window.scrollY;
-    auroras.forEach((a, i) => {
-      const speed = (i + 1) * 0.05;
-      a.style.transform = `translateY(${scroll * speed}px)`;
+    orbs.forEach((orb, i) => {
+      const speed = (i + 1) * 0.04;
+      orb.style.transform = `translateY(${scroll * speed}px)`;
     });
   });
 }
 
-// --- Mobile Menu Toggle ---
+// --- Mobile Menu ---
+let mobileMenuOpen = false;
+
+function closeMobileMenu() {
+  const btn = document.getElementById('mobile-menu-btn');
+  const nav = document.getElementById('mobile-nav');
+  if (!btn || !nav) return;
+
+  mobileMenuOpen = false;
+  btn.classList.remove('active');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'メニューを開く');
+  nav.classList.remove('open');
+  nav.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
 function initMobileMenu() {
   const btn = document.getElementById('mobile-menu-btn');
-  if (!btn) return;
+  const nav = document.getElementById('mobile-nav');
+  if (!btn || !nav) return;
 
   btn.addEventListener('click', () => {
-    btn.classList.toggle('active');
+    mobileMenuOpen = !mobileMenuOpen;
+
+    if (mobileMenuOpen) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-label', 'メニューを閉じる');
+      nav.classList.add('open');
+      nav.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    } else {
+      closeMobileMenu();
+    }
+  });
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenuOpen) {
+      closeMobileMenu();
+    }
   });
 }
 
-// --- Initialize Everything ---
+// --- Initialize ---
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('particle-canvas');
   if (canvas) new ParticleSystem(canvas);
