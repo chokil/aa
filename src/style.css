@@ -131,20 +131,23 @@ img { display: block; max-width: 100%; height: auto; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  background: var(--black);
 }
 
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.35) 100%);
+.hero-illust {
+  margin-bottom: 1.5rem;
+  background: var(--white);
+  padding: 1.25rem;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero-bg img {
+.hero-illust img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  object-fit: contain;
 }
 
 .hero-content {
@@ -304,6 +307,16 @@ img { display: block; max-width: 100%; height: auto; }
   object-fit: cover;
 }
 
+.about-visual--illust {
+  background: var(--white);
+  padding: 1.25rem;
+  border: 1px solid var(--gray-100);
+}
+
+.about-visual--illust img {
+  object-fit: contain;
+}
+
 .voice-block {
   display: flex;
   gap: 1.25rem;
@@ -382,7 +395,24 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 img[data-fallback] {
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.work-card-visual--illust {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-card-visual--illust img {
+  object-fit: contain;
+}
+
+.work-card:active .work-card-visual--illust img {
+  transform: scale(1.02);
 }
 
 .work-card:active .work-card-visual img {
@@ -529,6 +559,13 @@ img[data-fallback] {
   background: var(--gray-100);
 }
 
+.team-card img.team-illust {
+  object-fit: contain;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  padding: 0.75rem;
+}
+
 .team-card h3 {
   font-size: 0.9rem;
   font-weight: 800;
@@ -576,6 +613,12 @@ img[data-fallback] {
   object-fit: cover;
 }
 
+.voice-card .voice-visual img.voice-illust {
+  object-fit: contain;
+  background: var(--white);
+  padding: 0.25rem;
+}
+
 .voice-card p {
   font-size: 0.92rem;
   font-weight: 500;
@@ -613,6 +656,13 @@ img[data-fallback] {
   width: 100%;
   object-fit: cover;
   background: var(--gray-100);
+}
+
+.journal-list img.journal-illust {
+  object-fit: contain;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  padding: 0.5rem;
 }
 
 .journal-list time {
@@ -887,7 +937,9 @@ img[data-fallback] {
 .sheet-visual img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--white);
+  padding: 1rem;
 }
 
 .sheet-close {

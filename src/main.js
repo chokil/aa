@@ -212,7 +212,7 @@ function initForm() {
 }
 
 /* --- Image Fallback --- */
-const IMG_FALLBACK = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
+const IMG_FALLBACK = '/illustrations/about-studio.png';
 
 function initImageFallback() {
   document.querySelectorAll('img').forEach((img) => {
