@@ -25,7 +25,7 @@ function renderHeader(data) {
 
 function renderHero(data) {
   const h = data.hero;
-  const img = document.querySelector('.hero-illust img');
+  const img = document.querySelector('.hero-illust-img') || document.querySelector('.hero-illust img');
   if (img) {
     img.src = h.image;
     img.alt = h.imageAlt;
