@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="翠光 SUIGO — 心に残るデジタル体験を創造するクリエイティブスタジオ" />
+  <meta name="description" content="翠光 SUIGO — 心に残るデジタル体験を創造するクリエイティブスタジオ。ブランド戦略・UIデザイン・フロントエンド開発を一気通貫で手がけます。" />
+  <meta name="theme-color" content="#07080c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="翠光 SUIGO — Digital Experience Studio" />
+  <meta property="og:description" content="心に残るデジタル体験を創造するクリエイティブスタジオ" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="翠光 SUIGO — Digital Experience Studio" />
+  <meta name="twitter:description" content="心に残るデジタル体験を創造するクリエイティブスタジオ" />
   <title>翠光 SUIGO — Digital Experience Studio</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233ecf8e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%2307080c' font-family='sans-serif' font-weight='bold'>翠</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,17 +20,19 @@
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <div id="cursor-glow" aria-hidden="true"></div>
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
   <!-- Mobile Navigation Overlay -->
   <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
     <nav class="mobile-nav-inner">
-      <a href="#about" class="mobile-nav-link">About</a>
-      <a href="#works" class="mobile-nav-link">Works</a>
-      <a href="#services" class="mobile-nav-link">Services</a>
-      <a href="#process" class="mobile-nav-link">Process</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <a href="#about" class="mobile-nav-link">私たちについて</a>
+      <a href="#works" class="mobile-nav-link">制作実績</a>
+      <a href="#services" class="mobile-nav-link">サービス</a>
+      <a href="#process" class="mobile-nav-link">プロセス</a>
+      <a href="#voices" class="mobile-nav-link">お客様の声</a>
+      <a href="#contact" class="mobile-nav-link">お問い合わせ</a>
       <a href="#contact" class="btn-primary mobile-nav-cta">
         <span>プロジェクトを相談する</span>
       </a>
@@ -37,11 +47,12 @@
         <span class="logo-name">SUIGO</span>
       </a>
       <nav class="desktop-nav" aria-label="メインナビゲーション">
-        <a href="#about">About</a>
-        <a href="#works">Works</a>
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-section="about">私たちについて</a>
+        <a href="#works" data-section="works">制作実績</a>
+        <a href="#services" data-section="services">サービス</a>
+        <a href="#process" data-section="process">プロセス</a>
+        <a href="#voices" data-section="voices">お客様の声</a>
+        <a href="#contact" data-section="contact">お問い合わせ</a>
       </nav>
       <a href="#contact" class="header-cta magnetic-btn" data-strength="18">
         <span>相談する</span>
@@ -116,16 +127,16 @@
     <div class="marquee-band" aria-hidden="true">
       <div class="marquee-track">
         <div class="marquee-group">
-          <span>Design</span><span class="marquee-sep">✦</span>
-          <span>Develop</span><span class="marquee-sep">✦</span>
-          <span>Deliver</span><span class="marquee-sep">✦</span>
-          <span>Delight</span><span class="marquee-sep">✦</span>
+          <span>構想</span><span class="marquee-sep">✦</span>
+          <span>設計</span><span class="marquee-sep">✦</span>
+          <span>開発</span><span class="marquee-sep">✦</span>
+          <span>感動</span><span class="marquee-sep">✦</span>
         </div>
         <div class="marquee-group" aria-hidden="true">
-          <span>Design</span><span class="marquee-sep">✦</span>
-          <span>Develop</span><span class="marquee-sep">✦</span>
-          <span>Deliver</span><span class="marquee-sep">✦</span>
-          <span>Delight</span><span class="marquee-sep">✦</span>
+          <span>構想</span><span class="marquee-sep">✦</span>
+          <span>設計</span><span class="marquee-sep">✦</span>
+          <span>開発</span><span class="marquee-sep">✦</span>
+          <span>感動</span><span class="marquee-sep">✦</span>
         </div>
       </div>
     </div>
@@ -187,7 +198,12 @@
           <p class="section-desc reveal-up">ブランドの課題に向き合い、成果につながったプロジェクトをご紹介します。</p>
         </div>
         <div class="bento-grid">
-          <article class="bento-card bento-large reveal-up" style="--delay: 0.05s; --accent: #3ecf8e;">
+          <article class="bento-card bento-large reveal-up tilt-card" style="--delay: 0.05s; --accent: #3ecf8e;" tabindex="0" role="button"
+            data-project="ryokufu"
+            data-title="緑風テック"
+            data-tag="Branding / Web"
+            data-desc="サステナブルテック企業のブランドリニューアル。環境に配慮したビジュアルアイデンティティと、CV率240%向上を実現したランディングページを一気通貫で制作しました。"
+            data-stats="CV率 +240% / 制作期間 3ヶ月">
             <div class="bento-visual" style="--gradient: linear-gradient(135deg, #1a3d2e 0%, #3ecf8e 100%);">
               <span class="bento-icon">◆</span>
             </div>
@@ -197,7 +213,12 @@
               <p>サステナブルテック企業のブランドリニューアル。CV率 240% 向上。</p>
             </div>
           </article>
-          <article class="bento-card reveal-up" style="--delay: 0.1s; --accent: #6b8cff;">
+          <article class="bento-card reveal-up tilt-card" style="--delay: 0.1s; --accent: #6b8cff;" tabindex="0" role="button"
+            data-project="flowdesk"
+            data-title="FlowDesk"
+            data-tag="SaaS / Product"
+            data-desc="チーム向けワークフロー管理ツールのUI/UX設計とフロントエンド開発。複雑な機能を直感的なインターフェースに落とし込み、オンボーディング完了率を大幅に改善しました。"
+            data-stats="オンボーディング完了率 +68%">
             <div class="bento-visual" style="--gradient: linear-gradient(135deg, #1a2540 0%, #6b8cff 100%);">
               <span class="bento-icon">◈</span>
             </div>
@@ -207,7 +228,12 @@
               <p>チーム向けワークフロー管理ツールのUI/UX設計とフロントエンド開発。</p>
             </div>
           </article>
-          <article class="bento-card reveal-up" style="--delay: 0.15s; --accent: #f0c987;">
+          <article class="bento-card reveal-up tilt-card" style="--delay: 0.15s; --accent: #f0c987;" tabindex="0" role="button"
+            data-project="kobo-tomoshibi"
+            data-title="工房 灯"
+            data-tag="E-Commerce"
+            data-desc="職人の手仕事を伝えるECサイト。商品写真・ストーリーテリング・購入導線を再設計し、モバイル売上を3.2倍に成長させました。"
+            data-stats="モバイル売上 3.2倍 / リピート率 +45%">
             <div class="bento-visual" style="--gradient: linear-gradient(135deg, #3d3020 0%, #f0c987 100%);">
               <span class="bento-icon">✦</span>
             </div>
@@ -217,7 +243,12 @@
               <p>職人の手仕事を伝えるECサイト。モバイル売上 3.2倍に成長。</p>
             </div>
           </article>
-          <article class="bento-card bento-wide reveal-up" style="--delay: 0.2s; --accent: #e87da0;">
+          <article class="bento-card bento-wide reveal-up tilt-card" style="--delay: 0.2s; --accent: #e87da0;" tabindex="0" role="button"
+            data-project="hoshifuru"
+            data-title="星降る夜に"
+            data-tag="Campaign / Interactive"
+            data-desc="没入型Web体験キャンペーン。スクロール連動アニメーションと音響演出で100万PV超えを達成。業界賞を受賞したインタラクティブ作品です。"
+            data-stats="100万PV超 / 業界賞受賞">
             <div class="bento-visual" style="--gradient: linear-gradient(135deg, #3d1a2e 0%, #e87da0 100%);">
               <span class="bento-icon">⬡</span>
             </div>
@@ -433,14 +464,15 @@
         </div>
         <div class="footer-nav">
           <div class="footer-col">
-            <h4>Studio</h4>
-            <a href="#about">About</a>
-            <a href="#works">Works</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
+            <h4>スタジオ</h4>
+            <a href="#about">私たちについて</a>
+            <a href="#works">制作実績</a>
+            <a href="#services">サービス</a>
+            <a href="#voices">お客様の声</a>
+            <a href="#contact">お問い合わせ</a>
           </div>
           <div class="footer-col">
-            <h4>Social</h4>
+            <h4>ソーシャル</h4>
             <a href="#">X (Twitter)</a>
             <a href="#">Instagram</a>
             <a href="#">note</a>
@@ -454,6 +486,35 @@
       </div>
     </div>
   </footer>
+
+  <!-- Project Modal -->
+  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" id="modal-close" aria-label="閉じる">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <span class="modal-tag" id="modal-tag"></span>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-stats" id="modal-stats"></div>
+      <a href="#contact" class="btn-primary modal-cta">
+        <span>似たプロジェクトを相談する</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H7M17 7V17"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 
   <script type="module" src="/src/main.js"></script>
 </body>

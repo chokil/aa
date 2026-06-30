@@ -257,6 +257,133 @@ function initContactForm() {
   });
 }
 
+// --- Scroll Progress ---
+function initScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${progress}%`;
+  }, { passive: true });
+}
+
+// --- Active Nav ---
+function initActiveNav() {
+  const navLinks = document.querySelectorAll('.desktop-nav a[data-section]');
+  const sections = Array.from(navLinks)
+    .map((link) => document.getElementById(link.dataset.section))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.dataset.section === id);
+          });
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+// --- Back to Top ---
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// --- Project Modal ---
+function initProjectModal() {
+  const modal = document.getElementById('project-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('modal-close');
+  const cards = document.querySelectorAll('.bento-card[data-title]');
+
+  if (!modal) return;
+
+  const tagEl = document.getElementById('modal-tag');
+  const titleEl = document.getElementById('modal-title');
+  const descEl = document.getElementById('modal-desc');
+  const statsEl = document.getElementById('modal-stats');
+
+  function openModal(card) {
+    tagEl.textContent = card.dataset.tag || '';
+    titleEl.textContent = card.dataset.title || '';
+    descEl.textContent = card.dataset.desc || '';
+    statsEl.textContent = card.dataset.stats || '';
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(card);
+      }
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+
+  modal.querySelector('.modal-cta')?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+}
+
+// --- Tilt Cards ---
+function initTiltCards() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(max-width: 768px)').matches) return;
+
+  document.querySelectorAll('.tilt-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-5px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
 // --- Parallax ---
 function initParallax() {
   const orbs = document.querySelectorAll('.orb');
@@ -333,4 +460,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initParallax();
   initMobileMenu();
+  initScrollProgress();
+  initActiveNav();
+  initBackToTop();
+  initProjectModal();
+  initTiltCards();
 });
