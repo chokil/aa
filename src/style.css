@@ -461,18 +461,243 @@ img { display: block; max-width: 100%; height: auto; }
   line-height: 1.6;
 }
 
-/* Voice */
-.voice-block blockquote p {
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.75;
-  letter-spacing: -0.01em;
-  margin-bottom: 1rem;
+/* Process */
+.process-list {
+  list-style: none;
+  margin-top: 1.5rem;
 }
 
-.voice-block footer {
-  font-size: 0.78rem;
+.process-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--gray-200);
+}
+
+.process-list li:last-child { border-bottom: 1px solid var(--gray-200); }
+
+.process-step {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.process-list h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.process-list p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+}
+
+/* Team */
+.team-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin: 1.5rem calc(var(--pad) * -1) 0;
+  padding: 0 var(--pad);
+}
+
+.team-scroll::-webkit-scrollbar { display: none; }
+
+.team-card {
+  flex: 0 0 160px;
+  scroll-snap-align: start;
+}
+
+.team-card img {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 0.65rem;
+  background: var(--gray-100);
+}
+
+.team-card h3 {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.team-card p {
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--gray-400);
+  margin-top: 0.1rem;
+}
+
+/* Voices */
+.voices-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.voice-card {
+  background: var(--white);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.block--gray .voice-card {
+  border: 1px solid var(--gray-200);
+}
+
+.voice-card .voice-visual {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.voice-card .voice-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.voice-card p {
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+
+.voice-card footer {
+  font-size: 0.72rem;
+  color: var(--gray-400);
+}
+
+/* Journal */
+.journal-list {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.journal-list li {
+  border-top: 1px solid var(--gray-200);
+}
+
+.journal-list li:last-child { border-bottom: 1px solid var(--gray-200); }
+
+.journal-list a {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  align-items: center;
+}
+
+.journal-list img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  background: var(--gray-100);
+}
+
+.journal-list time {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--gray-400);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.journal-list h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* FAQ */
+.faq-list { margin-top: 1.5rem; }
+
+.faq-item { border-top: 1px solid var(--gray-200); }
+
+.faq-item:last-child { border-bottom: 1px solid var(--gray-200); }
+
+.faq-item summary {
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 1.15rem 1.5rem 1.15rem 0;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--gray-400);
+}
+
+.faq-item[open] summary::after { content: '−'; }
+
+.faq-item p {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  line-height: 1.75;
+  padding-bottom: 1.15rem;
+}
+
+/* CTA Band */
+.cta-band {
+  background: var(--black);
+  color: var(--white);
+  padding: 3rem var(--pad);
+  text-align: center;
+}
+
+.cta-band-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 0.75rem;
+}
+
+.cta-band-title {
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.cta-band-btn {
+  display: inline-flex;
+  width: 100%;
+  max-width: 280px;
+  justify-content: center;
+  background: var(--white);
+  color: var(--black);
+}
+
+.cta-band-btn:active {
+  background: var(--red);
+  color: var(--white);
 }
 
 /* Contact */

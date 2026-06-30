@@ -94,7 +94,7 @@ function initCounters() {
 function initReveals() {
   if (reduced) return;
 
-  gsap.utils.toArray('.block-title, .voice-block p').forEach((el) => {
+  gsap.utils.toArray('.block-title, .cta-band-title, .voice-card p').forEach((el) => {
     gsap.from(el, {
       y: 30,
       opacity: 0,
