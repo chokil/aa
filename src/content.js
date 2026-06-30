@@ -109,7 +109,7 @@ function renderWorks(data) {
         data-desc="${esc(item.desc)}" data-stats="${esc(item.stats)}"
         data-image="${esc(item.image)}">
         <div class="work-card-visual work-card-visual--illust">
-          <img src="${esc(item.image)}" alt="${esc(item.title)} — 線画イラスト" width="800" height="800" loading="lazy" />
+          <img src="${esc(item.image)}" alt="${esc(item.title)} — 線画イラスト" width="1536" height="1024" loading="lazy" />
         </div>
         <span class="work-card-num">${String(i + 1).padStart(2, '0')}</span>
         <h3>${esc(item.title)}</h3>
@@ -197,7 +197,7 @@ function renderTeam(data) {
   if (scroll) {
     scroll.innerHTML = t.members.map((m) => `
       <article class="team-card">
-        <img src="${esc(m.image)}" alt="${esc(m.name)} — 線画ポートレート" width="400" height="500" loading="lazy" class="team-illust" />
+        <img src="${esc(m.image)}" alt="${esc(m.name)} — 線画ポートレート" width="1536" height="1024" loading="lazy" class="team-illust" />
         <h3>${esc(m.name)}</h3>
         <p>${esc(m.role)}</p>
       </article>
@@ -224,7 +224,7 @@ function renderVoices(data) {
     scroll.innerHTML = v.items.map((item) => `
       <blockquote class="voice-card">
         <figure class="voice-visual">
-          <img src="${esc(item.image)}" alt="" width="200" height="200" loading="lazy" class="voice-illust" />
+          <img src="${esc(item.image)}" alt="" width="1536" height="1024" loading="lazy" class="voice-illust" />
         </figure>
         <p>${esc(item.quote)}</p>
         <footer>${esc(item.attribution)}</footer>
@@ -252,7 +252,7 @@ function renderJournal(data) {
     list.innerHTML = j.posts.map((post) => `
       <li>
         <a href="${esc(post.url)}">
-          <img src="${esc(post.image)}" alt="" width="600" height="400" loading="lazy" class="journal-illust" />
+          <img src="${esc(post.image)}" alt="" width="1536" height="1024" loading="lazy" class="journal-illust" />
           <div>
             <time datetime="${esc(post.date)}">${esc(post.dateDisplay)}</time>
             <h3>${esc(post.title)}</h3>

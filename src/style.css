@@ -17,6 +17,7 @@
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-t: env(safe-area-inset-top, 0px);
   --pad: 20px;
+  --illust-ratio: 3 / 2;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -137,17 +138,19 @@ img { display: block; max-width: 100%; height: auto; }
 .hero-illust {
   margin-bottom: 1.5rem;
   background: var(--white);
-  padding: 1.25rem;
-  aspect-ratio: 4 / 3;
+  padding: 1rem;
+  aspect-ratio: var(--illust-ratio);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .hero-illust img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .hero-content {
@@ -308,13 +311,20 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 .about-visual--illust {
+  aspect-ratio: var(--illust-ratio);
   background: var(--white);
-  padding: 1.25rem;
+  padding: 1rem;
   border: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-visual--illust img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .voice-block {
@@ -399,16 +409,20 @@ img[data-fallback] {
 }
 
 .work-card-visual--illust {
+  aspect-ratio: var(--illust-ratio);
   background: var(--white);
   border: 1px solid var(--gray-100);
-  padding: 1.25rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .work-card-visual--illust img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .work-card:active .work-card-visual--illust img {
@@ -547,7 +561,7 @@ img[data-fallback] {
 .team-scroll::-webkit-scrollbar { display: none; }
 
 .team-card {
-  flex: 0 0 160px;
+  flex: 0 0 200px;
   scroll-snap-align: start;
 }
 
@@ -560,10 +574,12 @@ img[data-fallback] {
 }
 
 .team-card img.team-illust {
+  aspect-ratio: var(--illust-ratio);
   object-fit: contain;
+  object-position: center;
   background: var(--white);
   border: 1px solid var(--gray-100);
-  padding: 0.75rem;
+  padding: 0.65rem;
 }
 
 .team-card h3 {
@@ -600,9 +616,10 @@ img[data-fallback] {
 }
 
 .voice-card .voice-visual {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+  width: 72px;
+  aspect-ratio: var(--illust-ratio);
+  height: auto;
+  border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -615,8 +632,9 @@ img[data-fallback] {
 
 .voice-card .voice-visual img.voice-illust {
   object-fit: contain;
+  object-position: center;
   background: var(--white);
-  padding: 0.25rem;
+  padding: 0.35rem;
 }
 
 .voice-card p {
@@ -645,7 +663,7 @@ img[data-fallback] {
 
 .journal-list a {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 1rem;
   padding: 1rem 0;
   align-items: center;
@@ -659,10 +677,12 @@ img[data-fallback] {
 }
 
 .journal-list img.journal-illust {
+  aspect-ratio: var(--illust-ratio);
   object-fit: contain;
+  object-position: center;
   background: var(--white);
   border: 1px solid var(--gray-100);
-  padding: 0.5rem;
+  padding: 0.4rem;
 }
 
 .journal-list time {
@@ -928,18 +948,22 @@ img[data-fallback] {
 }
 
 .sheet-visual {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: var(--illust-ratio);
   margin-bottom: 1.25rem;
   overflow: hidden;
   background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sheet-visual img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
   background: var(--white);
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .sheet-close {
