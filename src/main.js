@@ -149,12 +149,24 @@ function initSheet() {
   const title = document.getElementById('sheet-title');
   const desc = document.getElementById('sheet-desc');
   const stats = document.getElementById('sheet-stats');
+  const visualWrap = document.getElementById('sheet-visual');
+  const visualImg = document.getElementById('sheet-image');
 
   function open(card) {
     tag.textContent = card.dataset.tag || '';
     title.textContent = card.dataset.title || '';
     desc.textContent = card.dataset.desc || '';
     stats.textContent = card.dataset.stats || '';
+
+    const imgSrc = card.dataset.image;
+    if (visualWrap && visualImg && imgSrc) {
+      visualImg.src = imgSrc;
+      visualImg.alt = card.dataset.title || '';
+      visualWrap.hidden = false;
+    } else if (visualWrap) {
+      visualWrap.hidden = true;
+    }
+
     sheet.classList.add('open');
     sheet.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';

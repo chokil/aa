@@ -9,10 +9,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta property="og:title" content="翠光 SUIGO" />
   <meta property="og:description" content="LifeWear for Digital" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80" />
   <title>翠光 SUIGO</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='%23fff' font-family='sans-serif' font-weight='900'>翠</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css" />
 </head>
@@ -29,6 +31,16 @@
 
   <main id="main">
     <section class="hero" id="hero" data-section="hero">
+      <div class="hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80"
+          alt=""
+          width="1200"
+          height="1600"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero-content">
       <p class="hero-meta">Tokyo · Since 2018</p>
       <h1 class="hero-title" id="hero-title">
         <span class="hero-line"><span class="char-wrap">心に</span></span>
@@ -43,6 +55,7 @@
         <div><dt><span class="stat-num" data-target="36">0</span></dt><dd>Clients</dd></div>
         <div><dt><span class="stat-num" data-target="8">0</span>yr</dt><dd>Since</dd></div>
       </dl>
+      </div>
     </section>
 
     <div class="ticker" aria-hidden="true">
@@ -53,6 +66,15 @@
     </div>
 
     <section class="block" id="about" data-section="about">
+      <figure class="about-visual">
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+          alt="翠光スタジオのワークスペース"
+          width="800"
+          height="533"
+          loading="lazy"
+        />
+      </figure>
       <span class="block-num">01</span>
       <h2 class="block-title">シンプルに、<br>徹底的に。</h2>
       <p class="block-text">本質的な美しさと機能性の両立。余計なものを削ぎ落とし、ブランドの核心だけを残す——それが翠光の哲学です。</p>
@@ -68,8 +90,11 @@
         <article class="work-card" data-project tabindex="0"
           data-title="緑風テック" data-tag="Branding / Web"
           data-desc="サステナブルテック企業のブランドリニューアル。CV率240%向上。"
-          data-stats="CV +240%">
-          <div class="work-card-visual work-card-visual--green"></div>
+          data-stats="CV +240%"
+          data-image="https://images.unsplash.com/photo-1473341304170-0efbb1c118ea?auto=format&fit=crop&w=800&q=80">
+          <div class="work-card-visual">
+            <img src="https://images.unsplash.com/photo-1473341304170-0efbb1c118ea?auto=format&fit=crop&w=800&q=80" alt="緑風テック — サステナブルテックのブランドイメージ" width="800" height="1067" loading="lazy" />
+          </div>
           <span class="work-card-num">01</span>
           <h3>緑風テック</h3>
           <p>Branding / Web</p>
@@ -77,8 +102,11 @@
         <article class="work-card" data-project tabindex="0"
           data-title="FlowDesk" data-tag="SaaS / Product"
           data-desc="ワークフロー管理ツールのUI/UX設計とフロントエンド開発。"
-          data-stats="Onboarding +68%">
-          <div class="work-card-visual work-card-visual--blue"></div>
+          data-stats="Onboarding +68%"
+          data-image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80">
+          <div class="work-card-visual">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="FlowDesk — ダッシュボードUI" width="800" height="1067" loading="lazy" />
+          </div>
           <span class="work-card-num">02</span>
           <h3>FlowDesk</h3>
           <p>SaaS / Product</p>
@@ -86,8 +114,11 @@
         <article class="work-card" data-project tabindex="0"
           data-title="工房 灯" data-tag="E-Commerce"
           data-desc="職人の手仕事を伝えるECサイト。モバイル売上3.2倍。"
-          data-stats="Sales 3.2×">
-          <div class="work-card-visual work-card-visual--warm"></div>
+          data-stats="Sales 3.2×"
+          data-image="https://images.unsplash.com/photo-1578749557448-b199217855bb?auto=format&fit=crop&w=800&q=80">
+          <div class="work-card-visual">
+            <img src="https://images.unsplash.com/photo-1578749557448-b199217855bb?auto=format&fit=crop&w=800&q=80" alt="工房 灯 — 職人の手仕事" width="800" height="1067" loading="lazy" />
+          </div>
           <span class="work-card-num">03</span>
           <h3>工房 灯</h3>
           <p>E-Commerce</p>
@@ -95,8 +126,11 @@
         <article class="work-card" data-project tabindex="0"
           data-title="星降る夜に" data-tag="Interactive"
           data-desc="没入型Web体験。100万PV超、業界賞受賞。"
-          data-stats="1M+ PV">
-          <div class="work-card-visual work-card-visual--night"></div>
+          data-stats="1M+ PV"
+          data-image="https://images.unsplash.com/photo-1419242902214-272b31f78693?auto=format&fit=crop&w=800&q=80">
+          <div class="work-card-visual">
+            <img src="https://images.unsplash.com/photo-1419242902214-272b31f78693?auto=format&fit=crop&w=800&q=80" alt="星降る夜に — 没入型キャンペーン" width="800" height="1067" loading="lazy" />
+          </div>
           <span class="work-card-num">04</span>
           <h3>星降る夜に</h3>
           <p>Interactive</p>
@@ -136,6 +170,15 @@
     </section>
 
     <section class="block voice-block">
+      <figure class="voice-visual">
+        <img
+          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+          alt="クライアント 木村 裕子"
+          width="600"
+          height="600"
+          loading="lazy"
+        />
+      </figure>
       <blockquote>
         <p>「ビジネス成果まで考えてくれる rare なパートナー。問い合わせ数が 3 倍に。」</p>
         <footer>木村 裕子 — 緑風テック</footer>
@@ -197,6 +240,9 @@
     <div class="sheet-panel">
       <div class="sheet-handle" aria-hidden="true"></div>
       <button class="sheet-close" id="sheet-close" aria-label="閉じる">×</button>
+      <div class="sheet-visual" id="sheet-visual" hidden>
+        <img id="sheet-image" src="" alt="" width="800" height="600" />
+      </div>
       <span class="sheet-tag" id="sheet-tag"></span>
       <h3 id="sheet-title"></h3>
       <p id="sheet-desc"></p>
