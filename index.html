@@ -31,10 +31,10 @@
   <main id="main">
     <section class="hero" id="hero" data-section="hero">
       <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-content">
-      <figure class="hero-illust">
-        <img src="/illustrations/hero-illust.png" alt="翠光 — デジタル体験のイラスト" width="1536" height="1024" fetchpriority="high" />
+      <figure class="hero-illust illust-box illust-box--on-dark">
+        <img class="illust-img" src="/illustrations/hero-illust.png" alt="翠光 — デジタル体験のイラスト" width="1536" height="1024" fetchpriority="high" />
       </figure>
+      <div class="hero-content">
       <p class="hero-meta">Tokyo · Since 2018</p>
       <h1 class="hero-title" id="hero-title">
         <span class="hero-line"><span class="char-wrap">心に</span></span>
@@ -60,8 +60,9 @@
     </div>
 
     <section class="block" id="about" data-section="about">
-      <figure class="about-visual about-visual--illust">
+      <figure class="about-visual about-visual--illust illust-box">
         <img
+          class="illust-img"
           src="/illustrations/about-studio.png"
           alt="翠光スタジオのワークスペース — 線画イラスト"
           width="1536"
@@ -86,8 +87,8 @@
           data-desc="サステナブルテック企業のブランドリニューアル。CV率240%向上。"
           data-stats="CV +240%"
           data-image="/illustrations/work-green.png">
-          <div class="work-card-visual work-card-visual--illust">
-            <img src="/illustrations/work-green.png" alt="緑風テック — 線画イラスト" width="1536" height="1024" loading="lazy" />
+          <div class="work-card-visual work-card-visual--illust illust-box">
+            <img class="illust-img" src="/illustrations/work-green.png" alt="緑風テック — 線画イラスト" width="1536" height="1024" loading="lazy" />
           </div>
           <span class="work-card-num">01</span>
           <h3>緑風テック</h3>
@@ -98,8 +99,8 @@
           data-desc="ワークフロー管理ツールのUI/UX設計とフロントエンド開発。"
           data-stats="Onboarding +68%"
           data-image="/illustrations/work-saas.png">
-          <div class="work-card-visual work-card-visual--illust">
-            <img src="/illustrations/work-saas.png" alt="FlowDesk — 線画イラスト" width="1536" height="1024" loading="lazy" />
+          <div class="work-card-visual work-card-visual--illust illust-box">
+            <img class="illust-img" src="/illustrations/work-saas.png" alt="FlowDesk — 線画イラスト" width="1536" height="1024" loading="lazy" />
           </div>
           <span class="work-card-num">02</span>
           <h3>FlowDesk</h3>
@@ -110,8 +111,8 @@
           data-desc="職人の手仕事を伝えるECサイト。モバイル売上3.2倍。"
           data-stats="Sales 3.2×"
           data-image="/illustrations/work-craft.png">
-          <div class="work-card-visual work-card-visual--illust">
-            <img src="/illustrations/work-craft.png" alt="工房 灯 — 線画イラスト" width="1536" height="1024" loading="lazy" />
+          <div class="work-card-visual work-card-visual--illust illust-box">
+            <img class="illust-img" src="/illustrations/work-craft.png" alt="工房 灯 — 線画イラスト" width="1536" height="1024" loading="lazy" />
           </div>
           <span class="work-card-num">03</span>
           <h3>工房 灯</h3>
@@ -122,8 +123,8 @@
           data-desc="没入型Web体験。100万PV超、業界賞受賞。"
           data-stats="1M+ PV"
           data-image="/illustrations/work-night.png">
-          <div class="work-card-visual work-card-visual--illust">
-            <img src="/illustrations/work-night.png" alt="星降る夜に — 線画イラスト" width="1536" height="1024" loading="lazy" />
+          <div class="work-card-visual work-card-visual--illust illust-box">
+            <img class="illust-img" src="/illustrations/work-night.png" alt="星降る夜に — 線画イラスト" width="1536" height="1024" loading="lazy" />
           </div>
           <span class="work-card-num">04</span>
           <h3>星降る夜に</h3>
@@ -205,17 +206,23 @@
       <p class="block-text">小さなチームだから、意思決定が速い。</p>
       <div class="team-scroll">
         <article class="team-card">
-          <img src="/illustrations/team-1.png" alt="田中 健 — 線画ポートレート" width="1536" height="1024" loading="lazy" class="team-illust" />
+          <div class="illust-box">
+            <img src="/illustrations/team-1.png" alt="田中 健 — 線画ポートレート" width="1536" height="1024" loading="lazy" class="illust-img team-illust" />
+          </div>
           <h3>田中 健</h3>
           <p>Creative Director</p>
         </article>
         <article class="team-card">
-          <img src="/illustrations/team-2.png" alt="佐藤 美月 — 線画ポートレート" width="1536" height="1024" loading="lazy" class="team-illust" />
+          <div class="illust-box">
+            <img src="/illustrations/team-2.png" alt="佐藤 美月 — 線画ポートレート" width="1536" height="1024" loading="lazy" class="illust-img team-illust" />
+          </div>
           <h3>佐藤 美月</h3>
           <p>Lead Designer</p>
         </article>
         <article class="team-card">
-          <img src="/illustrations/team-3.png" alt="山本 大輔 — 線画ポートレート" width="1536" height="1024" loading="lazy" class="team-illust" />
+          <div class="illust-box">
+            <img src="/illustrations/team-3.png" alt="山本 大輔 — 線画ポートレート" width="1536" height="1024" loading="lazy" class="illust-img team-illust" />
+          </div>
           <h3>山本 大輔</h3>
           <p>Tech Lead</p>
         </article>
@@ -228,22 +235,22 @@
       <p class="block-text">クライアントの声</p>
       <div class="voices-scroll">
         <blockquote class="voice-card">
-          <figure class="voice-visual">
-            <img src="/illustrations/team-1.png" alt="" width="1536" height="1024" loading="lazy" class="voice-illust" />
+          <figure class="voice-visual illust-box">
+            <img src="/illustrations/team-1.png" alt="" width="1536" height="1024" loading="lazy" class="illust-img voice-illust" />
           </figure>
           <p>「ビジネス成果まで考えてくれる rare なパートナー。問い合わせ数が 3 倍に。」</p>
           <footer>木村 裕子 — 緑風テック</footer>
         </blockquote>
         <blockquote class="voice-card">
-          <figure class="voice-visual">
-            <img src="/illustrations/team-2.png" alt="" width="1536" height="1024" loading="lazy" class="voice-illust" />
+          <figure class="voice-visual illust-box">
+            <img src="/illustrations/team-2.png" alt="" width="1536" height="1024" loading="lazy" class="illust-img voice-illust" />
           </figure>
           <p>「細部へのこだわりが素晴らしく、プロダクト品質が一段上がりました。」</p>
           <footer>佐藤 健太 — FlowDesk</footer>
         </blockquote>
         <blockquote class="voice-card">
-          <figure class="voice-visual">
-            <img src="/illustrations/team-3.png" alt="" width="1536" height="1024" loading="lazy" class="voice-illust" />
+          <figure class="voice-visual illust-box">
+            <img src="/illustrations/team-3.png" alt="" width="1536" height="1024" loading="lazy" class="illust-img voice-illust" />
           </figure>
           <p>「職人の想いを超えるサイトが完成。スタッフ全員が感動しています。」</p>
           <footer>秋山 美咲 — 工房 灯</footer>
@@ -258,7 +265,9 @@
       <ul class="journal-list">
         <li>
           <a href="#">
-            <img src="/illustrations/journal-1.png" alt="" width="600" height="400" loading="lazy" class="journal-illust" />
+            <div class="illust-box">
+              <img src="/illustrations/journal-1.png" alt="" width="1536" height="1024" loading="lazy" class="illust-img journal-illust" />
+            </div>
             <div>
               <time datetime="2026-03-15">2026.03.15</time>
               <h3>モバイルファーストが当たり前になった2026年</h3>
@@ -267,7 +276,9 @@
         </li>
         <li>
           <a href="#">
-            <img src="/illustrations/journal-2.png" alt="" width="600" height="400" loading="lazy" class="journal-illust" />
+            <div class="illust-box">
+              <img src="/illustrations/journal-2.png" alt="" width="1536" height="1024" loading="lazy" class="illust-img journal-illust" />
+            </div>
             <div>
               <time datetime="2026-02-02">2026.02.02</time>
               <h3>ブランドサイトに必要な「余白」の設計</h3>
@@ -276,7 +287,9 @@
         </li>
         <li>
           <a href="#">
-            <img src="/illustrations/journal-3.png" alt="" width="600" height="400" loading="lazy" class="journal-illust" />
+            <div class="illust-box">
+              <img src="/illustrations/journal-3.png" alt="" width="1536" height="1024" loading="lazy" class="illust-img journal-illust" />
+            </div>
             <div>
               <time datetime="2026-01-10">2026.01.10</time>
               <h3>GSAP × スマホ — 軽量アニメーションの作法</h3>
@@ -371,8 +384,8 @@
     <div class="sheet-panel">
       <div class="sheet-handle" aria-hidden="true"></div>
       <button class="sheet-close" id="sheet-close" aria-label="閉じる">×</button>
-      <div class="sheet-visual" id="sheet-visual" hidden>
-        <img id="sheet-image" src="" alt="" width="1536" height="1024" />
+      <div class="sheet-visual illust-box" id="sheet-visual" hidden>
+        <img class="illust-img" id="sheet-image" src="" alt="" width="1536" height="1024" />
       </div>
       <span class="sheet-tag" id="sheet-tag"></span>
       <h3 id="sheet-title"></h3>

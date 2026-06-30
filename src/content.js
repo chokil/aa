@@ -108,8 +108,8 @@ function renderWorks(data) {
         data-title="${esc(item.title)}" data-tag="${esc(item.tag)}"
         data-desc="${esc(item.desc)}" data-stats="${esc(item.stats)}"
         data-image="${esc(item.image)}">
-        <div class="work-card-visual work-card-visual--illust">
-          <img src="${esc(item.image)}" alt="${esc(item.title)} — 線画イラスト" width="1536" height="1024" loading="lazy" />
+        <div class="work-card-visual work-card-visual--illust illust-box">
+          <img class="illust-img" src="${esc(item.image)}" alt="${esc(item.title)} — 線画イラスト" width="1536" height="1024" loading="lazy" />
         </div>
         <span class="work-card-num">${String(i + 1).padStart(2, '0')}</span>
         <h3>${esc(item.title)}</h3>
@@ -197,7 +197,9 @@ function renderTeam(data) {
   if (scroll) {
     scroll.innerHTML = t.members.map((m) => `
       <article class="team-card">
-        <img src="${esc(m.image)}" alt="${esc(m.name)} — 線画ポートレート" width="1536" height="1024" loading="lazy" class="team-illust" />
+        <div class="illust-box">
+          <img src="${esc(m.image)}" alt="${esc(m.name)} — 線画ポートレート" width="1536" height="1024" loading="lazy" class="illust-img team-illust" />
+        </div>
         <h3>${esc(m.name)}</h3>
         <p>${esc(m.role)}</p>
       </article>
@@ -223,8 +225,8 @@ function renderVoices(data) {
   if (scroll) {
     scroll.innerHTML = v.items.map((item) => `
       <blockquote class="voice-card">
-        <figure class="voice-visual">
-          <img src="${esc(item.image)}" alt="" width="1536" height="1024" loading="lazy" class="voice-illust" />
+        <figure class="voice-visual illust-box">
+          <img src="${esc(item.image)}" alt="" width="1536" height="1024" loading="lazy" class="illust-img voice-illust" />
         </figure>
         <p>${esc(item.quote)}</p>
         <footer>${esc(item.attribution)}</footer>
@@ -252,7 +254,9 @@ function renderJournal(data) {
     list.innerHTML = j.posts.map((post) => `
       <li>
         <a href="${esc(post.url)}">
-          <img src="${esc(post.image)}" alt="" width="1536" height="1024" loading="lazy" class="journal-illust" />
+          <div class="illust-box">
+            <img src="${esc(post.image)}" alt="" width="1536" height="1024" loading="lazy" class="illust-img journal-illust" />
+          </div>
           <div>
             <time datetime="${esc(post.date)}">${esc(post.dateDisplay)}</time>
             <h3>${esc(post.title)}</h3>
