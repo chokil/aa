@@ -1,5 +1,7 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { loadSiteData } from './data.js';
+import { renderSite } from './content.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -202,13 +204,23 @@ function initForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('name')?.value;
+    const reply = document.getElementById('contact')?.dataset.successReply || '2営業日以内にご返信します。';
     form.innerHTML = `
       <div class="form-success">
         <h3>${name ? `${name} さん、ありがとうございます` : '送信完了'}</h3>
-        <p>2営業日以内にご返信します。</p>
+        <p>${reply}</p>
       </div>
     `;
   });
+}
+
+/* --- Preview Banner --- */
+function initPreviewBanner() {
+  if (new URLSearchParams(location.search).get('preview') !== '1') return;
+  const bar = document.createElement('div');
+  bar.className = 'preview-banner';
+  bar.innerHTML = 'プレビューモード <a href="/">通常表示</a>';
+  document.body.prepend(bar);
 }
 
 /* --- Image Fallback --- */
@@ -226,6 +238,14 @@ function initImageFallback() {
 
 /* --- Init --- */
 async function init() {
+  try {
+    const data = await loadSiteData();
+    renderSite(data);
+  } catch (err) {
+    console.warn('Content load failed, using static HTML', err);
+  }
+
+  initPreviewBanner();
   await initPreloader();
   initImageFallback();
   initHero();
