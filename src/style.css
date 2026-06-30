@@ -378,6 +378,11 @@ img { display: block; max-width: 100%; height: auto; }
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s var(--ease);
+  background: var(--gray-100);
+}
+
+img[data-fallback] {
+  object-fit: cover;
 }
 
 .work-card:active .work-card-visual img {

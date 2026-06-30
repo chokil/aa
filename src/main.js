@@ -211,9 +211,23 @@ function initForm() {
   });
 }
 
+/* --- Image Fallback --- */
+const IMG_FALLBACK = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
+
+function initImageFallback() {
+  document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('error', () => {
+      if (img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      img.src = IMG_FALLBACK;
+    }, { once: true });
+  });
+}
+
 /* --- Init --- */
 async function init() {
   await initPreloader();
+  initImageFallback();
   initHero();
   initTicker();
   initCarousel();
