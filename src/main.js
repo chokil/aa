@@ -145,7 +145,7 @@ function initProjectModal() {
   const modal = document.getElementById('project-modal');
   const backdrop = document.getElementById('modal-backdrop');
   const closeBtn = document.getElementById('modal-close');
-  const cards = document.querySelectorAll('.work-card[data-title]');
+  const cards = document.querySelectorAll('.work-row[data-title]');
 
   if (!modal) return;
 
