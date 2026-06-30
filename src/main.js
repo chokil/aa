@@ -1,336 +1,262 @@
-/* ============================================
-   翠光 SUIGO — Interactive Engine
-   ============================================ */
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { loadSiteData } from './data.js';
+import { renderSite } from './content.js';
 
-// --- Particle System ---
-class ParticleSystem {
-  constructor(canvas) {
-    this.canvas = canvas;
-    this.ctx = canvas.getContext('2d');
-    this.particles = [];
-    this.mouse = { x: -1000, y: -1000 };
-    this.resize();
-    this.init();
-    this.bindEvents();
-    this.animate();
-  }
+gsap.registerPlugin(ScrollTrigger);
 
-  resize() {
-    this.width = this.canvas.width = window.innerWidth;
-    this.height = this.canvas.height = window.innerHeight;
-  }
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  init() {
-    const count = Math.min(70, Math.floor((this.width * this.height) / 16000));
-    this.particles = [];
-    for (let i = 0; i < count; i++) {
-      this.particles.push({
-        x: Math.random() * this.width,
-        y: Math.random() * this.height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        radius: Math.random() * 1.2 + 0.4,
-        opacity: Math.random() * 0.4 + 0.08,
-      });
-    }
-  }
+/* --- Preloader --- */
+function initPreloader() {
+  const el = document.getElementById('preloader');
+  const bar = document.getElementById('preloader-progress');
+  if (!el) return Promise.resolve();
 
-  bindEvents() {
-    window.addEventListener('resize', () => {
-      this.resize();
-      this.init();
-    });
-    window.addEventListener('mousemove', (e) => {
-      this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
-    });
-  }
-
-  animate() {
-    this.ctx.clearRect(0, 0, this.width, this.height);
-
-    for (const p of this.particles) {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0) p.x = this.width;
-      if (p.x > this.width) p.x = 0;
-      if (p.y < 0) p.y = this.height;
-      if (p.y > this.height) p.y = 0;
-
-      const dx = this.mouse.x - p.x;
-      const dy = this.mouse.y - p.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 140 && dist > 0) {
-        const force = (140 - dist) / 140;
-        p.vx -= (dx / dist) * force * 0.018;
-        p.vy -= (dy / dist) * force * 0.018;
+  return new Promise((resolve) => {
+    let pct = 0;
+    const iv = setInterval(() => {
+      pct += 22;
+      if (pct >= 100) {
+        clearInterval(iv);
+        if (bar) bar.style.width = '100%';
+        setTimeout(() => { el.classList.add('done'); resolve(); }, 300);
+      } else if (bar) {
+        bar.style.width = `${pct}%`;
       }
-
-      p.vx *= 0.99;
-      p.vy *= 0.99;
-
-      this.ctx.beginPath();
-      this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      this.ctx.fillStyle = `rgba(62, 207, 142, ${p.opacity})`;
-      this.ctx.fill();
-    }
-
-    for (let i = 0; i < this.particles.length; i++) {
-      for (let j = i + 1; j < this.particles.length; j++) {
-        const a = this.particles[i];
-        const b = this.particles[j];
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 110) {
-          const opacity = ((110 - dist) / 110) * 0.1;
-          this.ctx.beginPath();
-          this.ctx.moveTo(a.x, a.y);
-          this.ctx.lineTo(b.x, b.y);
-          this.ctx.strokeStyle = `rgba(107, 140, 255, ${opacity})`;
-          this.ctx.lineWidth = 0.5;
-          this.ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(() => this.animate());
-  }
-}
-
-// --- Cursor Glow ---
-function initCursorGlow() {
-  const glow = document.getElementById('cursor-glow');
-  if (!glow) return;
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let glowX = 0;
-  let glowY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    }, 60);
   });
-
-  function update() {
-    glowX += (mouseX - glowX) * 0.08;
-    glowY += (mouseY - glowY) * 0.08;
-    glow.style.left = `${glowX}px`;
-    glow.style.top = `${glowY}px`;
-    requestAnimationFrame(update);
-  }
-
-  update();
 }
 
-// --- Scroll Reveal ---
-function initScrollReveal() {
-  const elements = document.querySelectorAll('.reveal-up');
+/* --- Hero --- */
+function initHero() {
+  if (reduced) {
+    document.querySelectorAll('.char-wrap').forEach((c) => { c.style.transform = 'none'; });
+    const sub = document.getElementById('hero-sub');
+    if (sub) sub.style.opacity = '0.55';
+    return;
+  }
+
+  const tl = gsap.timeline({ delay: 0.15 });
+  tl.to('.char-wrap', { y: 0, duration: 0.9, stagger: 0.07, ease: 'power4.out' });
+  tl.to('#hero-sub', { opacity: 0.55, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+}
+
+/* --- Ticker --- */
+function initTicker() {
+  if (reduced) return;
+  const track = document.getElementById('ticker-track');
+  if (!track) return;
+
+  gsap.to(track, {
+    x: -(track.scrollWidth / 2),
+    duration: 14,
+    ease: 'none',
+    repeat: -1,
+  });
+}
+
+/* --- Works Carousel Dots --- */
+function initCarousel() {
+  const carousel = document.getElementById('works-carousel');
+  const dots = document.querySelectorAll('#carousel-dots span');
+  if (!carousel || !dots.length) return;
+
+  carousel.addEventListener('scroll', () => {
+    const cardW = carousel.querySelector('.work-card')?.offsetWidth || 1;
+    const gap = 12;
+    const idx = Math.round(carousel.scrollLeft / (cardW + gap));
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }, { passive: true });
+}
+
+/* --- Counters --- */
+function initCounters() {
+  document.querySelectorAll('.stat-num[data-target]').forEach((el) => {
+    const target = +el.dataset.target;
+    if (reduced) { el.textContent = target; return; }
+
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        gsap.to(el, {
+          textContent: target,
+          duration: 1.5,
+          ease: 'power2.out',
+          snap: { textContent: 1 },
+        });
+      },
+    });
+  });
+}
+
+/* --- Scroll Reveals --- */
+function initReveals() {
+  if (reduced) return;
+
+  gsap.utils.toArray('.block-title, .cta-band-title, .voice-card p').forEach((el) => {
+    gsap.from(el, {
+      y: 30,
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+    });
+  });
+}
+
+/* --- Tab Bar Active --- */
+function initTabbar() {
+  const tabs = document.querySelectorAll('.tabbar a[data-section]');
+  const sections = [...tabs].map((t) => document.getElementById(t.dataset.section)).filter(Boolean);
 
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          tabs.forEach((t) => t.classList.toggle('active', t.dataset.section === e.target.id));
         }
       });
     },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
   );
 
-  elements.forEach((el) => observer.observe(el));
-}
+  sections.forEach((s) => observer.observe(s));
 
-// --- Navbar Scroll ---
-function initNavbar() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-}
-
-// --- Smooth Scroll ---
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const href = anchor.getAttribute('href');
-      if (!href || href === '#') return;
-
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', (e) => {
+      const href = tab.getAttribute('href');
+      if (!href) return;
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        closeMobileMenu();
-        const offset = 76;
-        const position = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: position, behavior: 'smooth' });
+        target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
       }
     });
   });
 }
 
-// --- Counter Animation ---
-function initCounters() {
-  const counters = document.querySelectorAll('.stat-number[data-target]');
+/* --- Bottom Sheet --- */
+function initSheet() {
+  const sheet = document.getElementById('sheet');
+  const bg = document.getElementById('sheet-bg');
+  const close = document.getElementById('sheet-close');
+  const cta = document.getElementById('sheet-cta');
+  const cards = document.querySelectorAll('[data-project]');
+  if (!sheet) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target, parseInt(entry.target.dataset.target, 10));
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  const tag = document.getElementById('sheet-tag');
+  const title = document.getElementById('sheet-title');
+  const desc = document.getElementById('sheet-desc');
+  const stats = document.getElementById('sheet-stats');
+  const visualWrap = document.getElementById('sheet-visual');
+  const visualImg = document.getElementById('sheet-image');
 
-  counters.forEach((c) => observer.observe(c));
-}
+  function open(card) {
+    tag.textContent = card.dataset.tag || '';
+    title.textContent = card.dataset.title || '';
+    desc.textContent = card.dataset.desc || '';
+    stats.textContent = card.dataset.stats || '';
 
-function animateCounter(el, target) {
-  const duration = 2000;
-  const start = performance.now();
-
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 4);
-    el.textContent = Math.round(target * eased);
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
+    const imgSrc = card.dataset.image;
+    if (visualWrap && visualImg && imgSrc) {
+      visualImg.src = imgSrc;
+      visualImg.alt = card.dataset.title || '';
+      visualWrap.hidden = false;
+    } else if (visualWrap) {
+      visualWrap.hidden = true;
     }
+
+    sheet.classList.add('open');
+    sheet.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
   }
 
-  requestAnimationFrame(update);
-}
+  function shut() {
+    sheet.classList.remove('open');
+    sheet.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
 
-// --- Magnetic Buttons ---
-function initMagneticButtons() {
-  document.querySelectorAll('.magnetic-btn').forEach((btn) => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const strength = parseInt(btn.dataset.strength, 10) || 20;
-
-      btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
-      const inner = btn.querySelector('span');
-      if (inner) {
-        inner.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
-      }
-    });
-
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-      const inner = btn.querySelector('span');
-      if (inner) inner.style.transform = '';
-    });
+  cards.forEach((c) => {
+    c.addEventListener('click', () => open(c));
   });
+
+  close?.addEventListener('click', shut);
+  bg?.addEventListener('click', shut);
+  cta?.addEventListener('click', shut);
+
+  let startY = 0;
+  const panel = sheet.querySelector('.sheet-panel');
+  panel?.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+  panel?.addEventListener('touchend', (e) => {
+    if (e.changedTouches[0].clientY - startY > 80) shut();
+  }, { passive: true });
 }
 
-// --- Contact Form ---
-function initContactForm() {
+/* --- Contact --- */
+function initForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('name')?.value;
-
+    const reply = document.getElementById('contact')?.dataset.successReply || '2営業日以内にご返信します。';
     form.innerHTML = `
       <div class="form-success">
-        <div class="form-success-icon">✨</div>
-        <h3>${name ? `${name} さん、ありがとうございます！` : 'お問い合わせありがとうございます！'}</h3>
-        <p>2営業日以内にご返信いたします。しばらくお待ちください。</p>
+        <h3>${name ? `${name} さん、ありがとうございます` : '送信完了'}</h3>
+        <p>${reply}</p>
       </div>
     `;
   });
 }
 
-// --- Parallax ---
-function initParallax() {
-  const orbs = document.querySelectorAll('.orb');
-  if (!orbs.length) return;
+/* --- Preview Banner --- */
+function initPreviewBanner() {
+  if (new URLSearchParams(location.search).get('preview') !== '1') return;
+  const bar = document.createElement('div');
+  bar.className = 'preview-banner';
+  bar.innerHTML = 'プレビューモード <a href="/">通常表示</a>';
+  document.body.prepend(bar);
+}
 
-  window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-    orbs.forEach((orb, i) => {
-      const speed = (i + 1) * 0.04;
-      orb.style.transform = `translateY(${scroll * speed}px)`;
-    });
+/* --- Image Fallback --- */
+const IMG_FALLBACK = '/illustrations/about-studio.png';
+
+function initImageFallback() {
+  document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('error', () => {
+      if (img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      img.src = IMG_FALLBACK;
+    }, { once: true });
   });
 }
 
-// --- Mobile Menu ---
-let mobileMenuOpen = false;
+/* --- Init --- */
+async function init() {
+  try {
+    const data = await loadSiteData();
+    renderSite(data);
+  } catch (err) {
+    console.warn('Content load failed, using static HTML', err);
+  }
 
-function closeMobileMenu() {
-  const btn = document.getElementById('mobile-menu-btn');
-  const nav = document.getElementById('mobile-nav');
-  if (!btn || !nav) return;
-
-  mobileMenuOpen = false;
-  btn.classList.remove('active');
-  btn.setAttribute('aria-expanded', 'false');
-  btn.setAttribute('aria-label', 'メニューを開く');
-  nav.classList.remove('open');
-  nav.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-function initMobileMenu() {
-  const btn = document.getElementById('mobile-menu-btn');
-  const nav = document.getElementById('mobile-nav');
-  if (!btn || !nav) return;
-
-  btn.addEventListener('click', () => {
-    mobileMenuOpen = !mobileMenuOpen;
-
-    if (mobileMenuOpen) {
-      btn.classList.add('active');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.setAttribute('aria-label', 'メニューを閉じる');
-      nav.classList.add('open');
-      nav.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    } else {
-      closeMobileMenu();
-    }
-  });
-
-  nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMobileMenu);
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenuOpen) {
-      closeMobileMenu();
-    }
-  });
-}
-
-// --- Initialize ---
-document.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.getElementById('particle-canvas');
-  if (canvas) new ParticleSystem(canvas);
-
-  initCursorGlow();
-  initScrollReveal();
-  initNavbar();
-  initSmoothScroll();
+  initPreviewBanner();
+  await initPreloader();
+  initImageFallback();
+  initHero();
+  initTicker();
+  initCarousel();
   initCounters();
-  initMagneticButtons();
-  initContactForm();
-  initParallax();
-  initMobileMenu();
-});
+  initReveals();
+  initTabbar();
+  initSheet();
+  initForm();
+  ScrollTrigger.refresh();
+}
+
+init();

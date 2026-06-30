@@ -1,0 +1,194 @@
+{
+  "meta": {
+    "title": "翠光 SUIGO",
+    "description": "翠光 SUIGO — 心に残るデジタル体験を創造するクリエイティブスタジオ",
+    "ogTitle": "翠光 SUIGO",
+    "ogDescription": "LifeWear for Digital",
+    "ogImage": "/illustrations/hero-illust.png"
+  },
+  "header": {
+    "logo": "SUIGO",
+    "badge": "受付中"
+  },
+  "hero": {
+    "image": "/illustrations/hero-illust.png",
+    "imageAlt": "翠光 — デジタル体験のイラスト",
+    "meta": "Tokyo · Since 2018",
+    "titleLines": ["心に", "残る", "体験", "をつくる"],
+    "outlineIndex": 2,
+    "subtitle": "ブランド・デザイン・開発をひとつに。",
+    "ctaText": "制作実績を見る",
+    "ctaHref": "#works",
+    "stats": [
+      { "value": 128, "suffix": "+", "label": "Projects" },
+      { "value": 36, "suffix": "", "label": "Clients" },
+      { "value": 8, "suffix": "yr", "label": "Since" }
+    ]
+  },
+  "ticker": ["SUIGO", "翠光", "DIGITAL", "STUDIO"],
+  "about": {
+    "num": "01",
+    "image": "/illustrations/about-studio.png",
+    "imageAlt": "翠光スタジオのワークスペース — 線画イラスト",
+    "title": "シンプルに、<br>徹底的に。",
+    "text": "本質的な美しさと機能性の両立。余計なものを削ぎ落とし、ブランドの核心だけを残す——それが翠光の哲学です。"
+  },
+  "works": {
+    "num": "02",
+    "title": "Works",
+    "items": [
+      {
+        "title": "緑風テック",
+        "tag": "Branding / Web",
+        "desc": "サステナブルテック企業のブランドリニューアル。CV率240%向上。",
+        "stats": "CV +240%",
+        "image": "/illustrations/work-green.png"
+      },
+      {
+        "title": "FlowDesk",
+        "tag": "SaaS / Product",
+        "desc": "ワークフロー管理ツールのUI/UX設計とフロントエンド開発。",
+        "stats": "Onboarding +68%",
+        "image": "/illustrations/work-saas.png"
+      },
+      {
+        "title": "工房 灯",
+        "tag": "E-Commerce",
+        "desc": "職人の手仕事を伝えるECサイト。モバイル売上3.2倍。",
+        "stats": "Sales 3.2×",
+        "image": "/illustrations/work-craft.png"
+      },
+      {
+        "title": "星降る夜に",
+        "tag": "Interactive",
+        "desc": "没入型Web体験。100万PV超、業界賞受賞。",
+        "stats": "1M+ PV",
+        "image": "/illustrations/work-night.png"
+      }
+    ]
+  },
+  "process": {
+    "num": "04",
+    "title": "Process",
+    "text": "プロジェクトの進め方。透明性とスピードを大切にしています。",
+    "steps": [
+      { "title": "Discover", "desc": "ヒアリングと調査で、課題とゴールを明確にします。" },
+      { "title": "Design", "desc": "ワイヤーからビジュアルまで、段階的にブラッシュアップ。" },
+      { "title": "Build", "desc": "最新技術で実装。パフォーマンスと品質を両立。" },
+      { "title": "Evolve", "desc": "データに基づく改善と、継続的な運用サポート。" }
+    ]
+  },
+  "services": {
+    "num": "05",
+    "title": "Services",
+    "items": [
+      { "title": "Brand & Visual", "desc": "ロゴ、カラーシステム、タイポグラフィ" },
+      { "title": "Web Design & Dev", "desc": "UI/UX設計からフロントエンド実装まで" },
+      { "title": "Interactive", "desc": "モーション・3D・スクロール演出" }
+    ]
+  },
+  "team": {
+    "num": "06",
+    "title": "Team",
+    "text": "小さなチームだから、意思決定が速い。",
+    "members": [
+      { "name": "田中 健", "role": "Creative Director", "image": "/illustrations/team-1.png" },
+      { "name": "佐藤 美月", "role": "Lead Designer", "image": "/illustrations/team-2.png" },
+      { "name": "山本 大輔", "role": "Tech Lead", "image": "/illustrations/team-3.png" }
+    ]
+  },
+  "voices": {
+    "num": "07",
+    "title": "Voices",
+    "text": "クライアントの声",
+    "items": [
+      {
+        "quote": "「ビジネス成果まで考えてくれる rare なパートナー。問い合わせ数が 3 倍に。」",
+        "attribution": "木村 裕子 — 緑風テック",
+        "image": "/illustrations/team-1.png"
+      },
+      {
+        "quote": "「細部へのこだわりが素晴らしく、プロダクト品質が一段上がりました。」",
+        "attribution": "佐藤 健太 — FlowDesk",
+        "image": "/illustrations/team-2.png"
+      },
+      {
+        "quote": "「職人の想いを超えるサイトが完成。スタッフ全員が感動しています。」",
+        "attribution": "秋山 美咲 — 工房 灯",
+        "image": "/illustrations/team-3.png"
+      }
+    ]
+  },
+  "journal": {
+    "num": "08",
+    "title": "Journal",
+    "text": "デザインとテクノロジーの記録",
+    "posts": [
+      {
+        "date": "2026-03-15",
+        "dateDisplay": "2026.03.15",
+        "title": "モバイルファーストが当たり前になった2026年",
+        "image": "/illustrations/journal-1.png",
+        "url": "#"
+      },
+      {
+        "date": "2026-02-02",
+        "dateDisplay": "2026.02.02",
+        "title": "ブランドサイトに必要な「余白」の設計",
+        "image": "/illustrations/journal-2.png",
+        "url": "#"
+      },
+      {
+        "date": "2026-01-10",
+        "dateDisplay": "2026.01.10",
+        "title": "GSAP × スマホ — 軽量アニメーションの作法",
+        "image": "/illustrations/journal-3.png",
+        "url": "#"
+      }
+    ]
+  },
+  "faq": {
+    "num": "09",
+    "title": "FAQ",
+    "text": "よくあるご質問",
+    "items": [
+      {
+        "question": "制作期間はどのくらいですか？",
+        "answer": "LP で 4〜6 週間、コーポレートサイトで 2〜3 ヶ月が目安です。規模により変動します。"
+      },
+      {
+        "question": "予算感を教えてください",
+        "answer": "LP 50 万円〜、ブランド + Web 150 万円〜が目安です。まずは無料でお見積りします。"
+      },
+      {
+        "question": "リモートのみでも依頼できますか？",
+        "answer": "はい。全国・海外からのご依頼も多数対応しています。Slack / Figma で連携します。"
+      },
+      {
+        "question": "リリース後のサポートは？",
+        "answer": "月額保守プラン、スポット改善、分析レポートなど柔軟に対応可能です。"
+      }
+    ]
+  },
+  "cta": {
+    "label": "New Project",
+    "title": "次のプロジェクトを<br>始めませんか。",
+    "btnText": "無料相談する",
+    "btnHref": "#contact"
+  },
+  "contact": {
+    "num": "10",
+    "title": "Let's Talk.",
+    "text": "ご相談無料。2営業日以内に返信します。",
+    "email": "hello@suigo.studio",
+    "address": "東京都渋谷区",
+    "successReply": "2営業日以内にご返信します。"
+  },
+  "footer": {
+    "logo": "SUIGO",
+    "copyright": "© 2026 翠光 Studio"
+  },
+  "admin": {
+    "password": "suigo2026"
+  }
+}
