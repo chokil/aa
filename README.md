@@ -7,7 +7,6 @@
 - `npm run dev` — Vite 開発サーバー（ポート 5173）
 - `npm run build` — 本番ビルド（`dist/` に出力）
 - `npm run preview` — 本番ビルドのプレビュー（ポート 4173）
-<<<<<<< HEAD
 
 ## Vercel へのデプロイ
 
@@ -30,5 +29,3 @@ npm install -g vercel
 vercel login
 vercel --prod
 ```
-=======
->>>>>>> origin/master
