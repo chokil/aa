@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="翠光 SUIGO — 心に残るデジタル体験を創造するクリエイティブスタジオ。ブランド戦略・UIデザイン・フロントエンド開発を一気通貫で手がけます。" />
-  <meta name="theme-color" content="#07080c" />
+  <meta name="theme-color" content="#080a09" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="翠光 SUIGO — Digital Experience Studio" />
   <meta property="og:description" content="心に残るデジタル体験を創造するクリエイティブスタジオ" />
@@ -13,18 +13,16 @@
   <meta name="twitter:title" content="翠光 SUIGO — Digital Experience Studio" />
   <meta name="twitter:description" content="心に残るデジタル体験を創造するクリエイティブスタジオ" />
   <title>翠光 SUIGO — Digital Experience Studio</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233ecf8e'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%2307080c' font-family='sans-serif' font-weight='bold'>翠</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236ee7b7'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23080a09' font-family='serif' font-weight='bold'>翠</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-  <div id="cursor-glow" aria-hidden="true"></div>
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <!-- Mobile Navigation Overlay -->
   <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
     <nav class="mobile-nav-inner">
       <a href="#about" class="mobile-nav-link">私たちについて</a>
@@ -33,33 +31,28 @@
       <a href="#process" class="mobile-nav-link">プロセス</a>
       <a href="#voices" class="mobile-nav-link">お客様の声</a>
       <a href="#contact" class="mobile-nav-link">お問い合わせ</a>
-      <a href="#contact" class="btn-primary mobile-nav-cta">
-        <span>プロジェクトを相談する</span>
-      </a>
+      <a href="#contact" class="btn-primary mobile-nav-cta"><span>プロジェクトを相談する</span></a>
     </nav>
   </div>
 
-  <!-- Navigation -->
   <header class="site-header" id="navbar">
     <div class="header-inner">
       <a href="#" class="logo">
         <span class="logo-mark">翠</span>
-        <span class="logo-name">SUIGO</span>
+        <span class="logo-text">
+          <span class="logo-name">SUIGO</span>
+          <span class="logo-sub">Digital Studio</span>
+        </span>
       </a>
       <nav class="desktop-nav" aria-label="メインナビゲーション">
-        <a href="#about" data-section="about">私たちについて</a>
-        <a href="#works" data-section="works">制作実績</a>
-        <a href="#services" data-section="services">サービス</a>
-        <a href="#process" data-section="process">プロセス</a>
-        <a href="#voices" data-section="voices">お客様の声</a>
-        <a href="#contact" data-section="contact">お問い合わせ</a>
+        <a href="#about" data-section="about">About</a>
+        <a href="#works" data-section="works">Works</a>
+        <a href="#services" data-section="services">Services</a>
+        <a href="#process" data-section="process">Process</a>
+        <a href="#voices" data-section="voices">Voices</a>
+        <a href="#contact" data-section="contact">Contact</a>
       </nav>
-      <a href="#contact" class="header-cta magnetic-btn" data-strength="18">
-        <span>相談する</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path d="M7 17L17 7M17 7H7M17 7V17"/>
-        </svg>
-      </a>
+      <a href="#contact" class="header-cta"><span>相談する</span></a>
       <button class="menu-toggle" id="mobile-menu-btn" aria-label="メニューを開く" aria-expanded="false">
         <span></span><span></span>
       </button>
@@ -67,281 +60,278 @@
   </header>
 
   <main>
-    <!-- Hero -->
     <section class="hero" id="hero">
-      <div class="hero-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="grid-overlay"></div>
-      </div>
-      <div class="hero-content">
-        <div class="hero-eyebrow reveal-up">
-          <span class="pulse-dot"></span>
-          <span>2026年 — 新規プロジェクト受付中</span>
-        </div>
-        <h1 class="hero-title">
-          <span class="title-row reveal-up" style="--delay: 0.05s">心に</span>
-          <span class="title-row title-highlight reveal-up" style="--delay: 0.15s">
-            <em>残る</em>体験を
-          </span>
-          <span class="title-row reveal-up" style="--delay: 0.25s">デザインする。</span>
-        </h1>
-        <p class="hero-lead reveal-up" style="--delay: 0.4s">
-          翠光は、ブランド戦略・UIデザイン・フロントエンド開発を<br class="hide-mobile">
-          一気通貫で手がけるデジタルクリエイティブスタジオです。
-        </p>
-        <div class="hero-actions reveal-up" style="--delay: 0.55s">
-          <a href="#works" class="btn-primary magnetic-btn" data-strength="15">
-            <span>制作実績を見る</span>
-            <div class="btn-shine"></div>
-          </a>
-          <a href="#about" class="btn-outline magnetic-btn" data-strength="15">
-            <span>スタジオについて</span>
-          </a>
-        </div>
-        <div class="hero-metrics reveal-up" style="--delay: 0.7s">
-          <div class="metric">
-            <span class="metric-value"><span class="stat-number" data-target="128">0</span><span class="metric-suffix">+</span></span>
-            <span class="metric-label">完了プロジェクト</span>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-kicker reveal-up">
+            <span class="kicker-line"></span>
+            2026 — 新規プロジェクト受付中
+          </p>
+          <h1 class="hero-title">
+            <span class="title-line reveal-up" style="--delay: 0.05s">心に</span>
+            <span class="title-line title-em reveal-up" style="--delay: 0.12s">残る体験</span>
+            <span class="title-line reveal-up" style="--delay: 0.2s">を、<em>設計</em>する。</span>
+          </h1>
+          <p class="hero-lead reveal-up" style="--delay: 0.32s">
+            ブランド戦略から UI、フロントエンドまで。<br class="hide-mobile">
+            翠光は一つのチームで、美しさと成果を両立するデジタル体験をつくります。
+          </p>
+          <div class="hero-actions reveal-up" style="--delay: 0.44s">
+            <a href="#works" class="btn-primary"><span>制作実績を見る</span></a>
+            <a href="#about" class="btn-ghost"><span>スタジオについて</span></a>
           </div>
-          <div class="metric-divider"></div>
-          <div class="metric">
-            <span class="metric-value"><span class="stat-number" data-target="36">0</span><span class="metric-suffix">社</span></span>
-            <span class="metric-label">クライアント</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric">
-            <span class="metric-value"><span class="stat-number" data-target="8">0</span><span class="metric-suffix">年</span></span>
-            <span class="metric-label">活動実績</span>
+          <dl class="hero-stats reveal-up" style="--delay: 0.56s">
+            <div class="stat">
+              <dt><span class="stat-number" data-target="128">0</span><span class="stat-suffix">+</span></dt>
+              <dd>完了プロジェクト</dd>
+            </div>
+            <div class="stat">
+              <dt><span class="stat-number" data-target="36">0</span><span class="stat-suffix">社</span></dt>
+              <dd>クライアント</dd>
+            </div>
+            <div class="stat">
+              <dt><span class="stat-number" data-target="8">0</span><span class="stat-suffix">年</span></dt>
+              <dd>活動実績</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero-visual reveal-up" style="--delay: 0.25s" aria-hidden="true">
+          <div class="visual-frame">
+            <div class="visual-glow"></div>
+            <div class="visual-ring visual-ring--1"></div>
+            <div class="visual-ring visual-ring--2"></div>
+            <div class="visual-kanji">翠</div>
+            <div class="visual-caption">
+              <span>Tokyo</span>
+              <span>Since 2018</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="scroll-hint" aria-hidden="true">
         <span>Scroll</span>
-        <div class="scroll-bar"></div>
+        <div class="scroll-line"></div>
       </div>
     </section>
 
-    <!-- Marquee -->
-    <div class="marquee-band" aria-hidden="true">
+    <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
         <div class="marquee-group">
-          <span>構想</span><span class="marquee-sep">✦</span>
-          <span>設計</span><span class="marquee-sep">✦</span>
-          <span>開発</span><span class="marquee-sep">✦</span>
-          <span>感動</span><span class="marquee-sep">✦</span>
+          <span>Strategy</span><span class="dot">·</span>
+          <span>Design</span><span class="dot">·</span>
+          <span>Engineering</span><span class="dot">·</span>
+          <span>Experience</span><span class="dot">·</span>
         </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span>構想</span><span class="marquee-sep">✦</span>
-          <span>設計</span><span class="marquee-sep">✦</span>
-          <span>開発</span><span class="marquee-sep">✦</span>
-          <span>感動</span><span class="marquee-sep">✦</span>
+        <div class="marquee-group">
+          <span>Strategy</span><span class="dot">·</span>
+          <span>Design</span><span class="dot">·</span>
+          <span>Engineering</span><span class="dot">·</span>
+          <span>Experience</span><span class="dot">·</span>
         </div>
       </div>
     </div>
 
-    <!-- About -->
     <section class="section about" id="about">
       <div class="container">
-        <div class="section-intro">
-          <span class="section-label reveal-up">01 — About</span>
-          <h2 class="section-heading reveal-up">
-            美しさと機能が<br>
-            <span class="gradient-text">調和する場所。</span>
-          </h2>
-        </div>
-        <div class="about-layout">
-          <div class="about-copy reveal-up">
-            <p class="about-lead">
-              私たちは「見た目だけの美しさ」ではなく、
-              ユーザーが自然に行動できる体験設計を大切にしています。
-            </p>
-            <p>
-              東京を拠点に、スタートアップから大手企業まで幅広いクライアントと協働。
-              戦略立案からデザイン、実装、運用改善まで、
-              プロジェクトの全工程をチーム一丸となって支えます。
-            </p>
+        <header class="section-head reveal-up">
+          <span class="section-num">01</span>
+          <div>
+            <p class="section-label">About</p>
+            <h2 class="section-title">美しさと機能が<br><span class="title-accent">調和する場所。</span></h2>
           </div>
-          <div class="about-cards">
-            <article class="info-card reveal-up" style="--delay: 0.1s">
-              <div class="info-card-icon">◈</div>
-              <h3>戦略から実装まで</h3>
-              <p>ブランドの本質を掘り下げ、デザインとコードで形にする一気通貫の制作体制。</p>
-            </article>
-            <article class="info-card reveal-up" style="--delay: 0.2s">
-              <div class="info-card-icon">✦</div>
-              <h3>細部へのこだわり</h3>
-              <p>タイポグラフィ、余白、マイクロインタラクション。すべてに意図を持って設計します。</p>
-            </article>
-            <article class="info-card reveal-up" style="--delay: 0.3s">
-              <div class="info-card-icon">⬡</div>
-              <h3>長期的なパートナー</h3>
-              <p>リリース後の改善・拡張まで伴走。ビジネスの成長に合わせた継続的なサポート。</p>
-            </article>
+        </header>
+        <div class="about-grid">
+          <blockquote class="about-quote reveal-up">
+            <p>見た目だけの美しさではなく、ユーザーが自然に行動できる体験設計を大切にしています。</p>
+          </blockquote>
+          <div class="about-body reveal-up" style="--delay: 0.1s">
+            <p>東京を拠点に、スタートアップから大手企業まで幅広いクライアントと協働。戦略立案からデザイン、実装、運用改善まで、プロジェクトの全工程をチーム一丸となって支えます。</p>
+            <ul class="about-list">
+              <li>
+                <span class="list-num">01</span>
+                <div>
+                  <strong>戦略から実装まで</strong>
+                  <span>ブランドの本質を掘り下げ、デザインとコードで形にする一気通貫の制作体制。</span>
+                </div>
+              </li>
+              <li>
+                <span class="list-num">02</span>
+                <div>
+                  <strong>細部へのこだわり</strong>
+                  <span>タイポグラフィ、余白、マイクロインタラクション。すべてに意図を持って設計します。</span>
+                </div>
+              </li>
+              <li>
+                <span class="list-num">03</span>
+                <div>
+                  <strong>長期的なパートナー</strong>
+                  <span>リリース後の改善・拡張まで伴走。ビジネスの成長に合わせた継続的なサポート。</span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Works -->
     <section class="section works" id="works">
       <div class="container">
-        <div class="section-intro section-intro-row">
+        <header class="section-head section-head--row reveal-up">
           <div>
-            <span class="section-label reveal-up">02 — Works</span>
-            <h2 class="section-heading reveal-up">
-              選ばれた<br>
-              <span class="gradient-text">制作実績。</span>
-            </h2>
+            <span class="section-num">02</span>
+            <p class="section-label">Works</p>
+            <h2 class="section-title">選ばれた<br><span class="title-accent">制作実績。</span></h2>
           </div>
-          <p class="section-desc reveal-up">ブランドの課題に向き合い、成果につながったプロジェクトをご紹介します。</p>
-        </div>
-        <div class="bento-grid">
-          <article class="bento-card bento-large reveal-up tilt-card" style="--delay: 0.05s; --accent: #3ecf8e;" tabindex="0" role="button"
-            data-project="ryokufu"
-            data-title="緑風テック"
-            data-tag="Branding / Web"
+          <p class="section-desc">ブランドの課題に向き合い、成果につながったプロジェクトをご紹介します。</p>
+        </header>
+
+        <div class="works-list">
+          <article class="work-card reveal-up" tabindex="0" role="button"
+            data-title="緑風テック" data-tag="Branding / Web"
             data-desc="サステナブルテック企業のブランドリニューアル。環境に配慮したビジュアルアイデンティティと、CV率240%向上を実現したランディングページを一気通貫で制作しました。"
             data-stats="CV率 +240% / 制作期間 3ヶ月">
-            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #1a3d2e 0%, #3ecf8e 100%);">
-              <span class="bento-icon">◆</span>
+            <div class="work-preview work-preview--green">
+              <div class="mock-ui">
+                <div class="mock-bar"><span></span><span></span><span></span></div>
+                <div class="mock-hero"></div>
+                <div class="mock-cards"><span></span><span></span><span></span></div>
+              </div>
             </div>
-            <div class="bento-body">
-              <span class="bento-tag">Branding / Web</span>
+            <div class="work-meta">
+              <span class="work-tag">Branding / Web</span>
               <h3>緑風テック</h3>
               <p>サステナブルテック企業のブランドリニューアル。CV率 240% 向上。</p>
+              <span class="work-link">詳細を見る</span>
             </div>
           </article>
-          <article class="bento-card reveal-up tilt-card" style="--delay: 0.1s; --accent: #6b8cff;" tabindex="0" role="button"
-            data-project="flowdesk"
-            data-title="FlowDesk"
-            data-tag="SaaS / Product"
+
+          <article class="work-card reveal-up" style="--delay: 0.08s" tabindex="0" role="button"
+            data-title="FlowDesk" data-tag="SaaS / Product"
             data-desc="チーム向けワークフロー管理ツールのUI/UX設計とフロントエンド開発。複雑な機能を直感的なインターフェースに落とし込み、オンボーディング完了率を大幅に改善しました。"
             data-stats="オンボーディング完了率 +68%">
-            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #1a2540 0%, #6b8cff 100%);">
-              <span class="bento-icon">◈</span>
+            <div class="work-preview work-preview--blue">
+              <div class="mock-ui mock-ui--dashboard">
+                <div class="mock-sidebar"></div>
+                <div class="mock-main">
+                  <div class="mock-row"></div>
+                  <div class="mock-row short"></div>
+                  <div class="mock-chart"></div>
+                </div>
+              </div>
             </div>
-            <div class="bento-body">
-              <span class="bento-tag">SaaS / Product</span>
+            <div class="work-meta">
+              <span class="work-tag">SaaS / Product</span>
               <h3>FlowDesk</h3>
-              <p>チーム向けワークフロー管理ツールのUI/UX設計とフロントエンド開発。</p>
+              <p>ワークフロー管理ツールの UI/UX 設計とフロントエンド開発。</p>
+              <span class="work-link">詳細を見る</span>
             </div>
           </article>
-          <article class="bento-card reveal-up tilt-card" style="--delay: 0.15s; --accent: #f0c987;" tabindex="0" role="button"
-            data-project="kobo-tomoshibi"
-            data-title="工房 灯"
-            data-tag="E-Commerce"
+
+          <article class="work-card reveal-up" style="--delay: 0.16s" tabindex="0" role="button"
+            data-title="工房 灯" data-tag="E-Commerce"
             data-desc="職人の手仕事を伝えるECサイト。商品写真・ストーリーテリング・購入導線を再設計し、モバイル売上を3.2倍に成長させました。"
             data-stats="モバイル売上 3.2倍 / リピート率 +45%">
-            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #3d3020 0%, #f0c987 100%);">
-              <span class="bento-icon">✦</span>
+            <div class="work-preview work-preview--amber">
+              <div class="mock-ui mock-ui--shop">
+                <div class="mock-product"></div>
+                <div class="mock-info"><span></span><span></span><span class="wide"></span></div>
+              </div>
             </div>
-            <div class="bento-body">
-              <span class="bento-tag">E-Commerce</span>
+            <div class="work-meta">
+              <span class="work-tag">E-Commerce</span>
               <h3>工房 灯</h3>
-              <p>職人の手仕事を伝えるECサイト。モバイル売上 3.2倍に成長。</p>
+              <p>職人の手仕事を伝える EC サイト。モバイル売上 3.2 倍に成長。</p>
+              <span class="work-link">詳細を見る</span>
             </div>
           </article>
-          <article class="bento-card bento-wide reveal-up tilt-card" style="--delay: 0.2s; --accent: #e87da0;" tabindex="0" role="button"
-            data-project="hoshifuru"
-            data-title="星降る夜に"
-            data-tag="Campaign / Interactive"
+
+          <article class="work-card reveal-up" style="--delay: 0.24s" tabindex="0" role="button"
+            data-title="星降る夜に" data-tag="Campaign / Interactive"
             data-desc="没入型Web体験キャンペーン。スクロール連動アニメーションと音響演出で100万PV超えを達成。業界賞を受賞したインタラクティブ作品です。"
             data-stats="100万PV超 / 業界賞受賞">
-            <div class="bento-visual" style="--gradient: linear-gradient(135deg, #3d1a2e 0%, #e87da0 100%);">
-              <span class="bento-icon">⬡</span>
+            <div class="work-preview work-preview--rose">
+              <div class="mock-ui mock-ui--immersive">
+                <div class="mock-stars"></div>
+                <div class="mock-title-block"></div>
+              </div>
             </div>
-            <div class="bento-body">
-              <span class="bento-tag">Campaign / Interactive</span>
+            <div class="work-meta">
+              <span class="work-tag">Campaign / Interactive</span>
               <h3>星降る夜に</h3>
-              <p>没入型Web体験キャンペーン。100万PV超え、業界賞を受賞。</p>
+              <p>没入型 Web 体験キャンペーン。100 万 PV 超え、業界賞を受賞。</p>
+              <span class="work-link">詳細を見る</span>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
     <section class="section services" id="services">
       <div class="container">
-        <div class="section-intro">
-          <span class="section-label reveal-up">03 — Services</span>
-          <h2 class="section-heading reveal-up">
-            提供する<br>
-            <span class="gradient-text">サービス。</span>
-          </h2>
-        </div>
-        <div class="services-grid">
-          <article class="service-card reveal-up" style="--delay: 0.05s">
-            <span class="service-num">01</span>
+        <header class="section-head reveal-up">
+          <span class="section-num">03</span>
+          <div>
+            <p class="section-label">Services</p>
+            <h2 class="section-title">提供する<br><span class="title-accent">サービス。</span></h2>
+          </div>
+        </header>
+        <div class="services-list">
+          <article class="service-item reveal-up" style="--delay: 0.05s">
+            <span class="service-index">01</span>
             <h3>ブランド &amp; ビジュアル</h3>
             <p>ロゴ、カラーシステム、タイポグラフィ、ブランドガイドラインまで一貫して設計。</p>
-            <ul class="service-tags">
-              <li>Brand Identity</li>
-              <li>Art Direction</li>
-              <li>Design System</li>
-            </ul>
+            <ul><li>Brand Identity</li><li>Art Direction</li><li>Design System</li></ul>
           </article>
-          <article class="service-card reveal-up" style="--delay: 0.15s">
-            <span class="service-num">02</span>
-            <h3>Webデザイン &amp; 開発</h3>
-            <p>レスポンシブ対応のUI設計から、高速で保守性の高いフロントエンド実装まで。</p>
-            <ul class="service-tags">
-              <li>UI/UX Design</li>
-              <li>Frontend Dev</li>
-              <li>Performance</li>
-            </ul>
+          <article class="service-item reveal-up" style="--delay: 0.12s">
+            <span class="service-index">02</span>
+            <h3>Web デザイン &amp; 開発</h3>
+            <p>レスポンシブ UI 設計から、高速で保守性の高いフロントエンド実装まで。</p>
+            <ul><li>UI/UX Design</li><li>Frontend Dev</li><li>Performance</li></ul>
           </article>
-          <article class="service-card reveal-up" style="--delay: 0.25s">
-            <span class="service-num">03</span>
+          <article class="service-item reveal-up" style="--delay: 0.19s">
+            <span class="service-index">03</span>
             <h3>インタラクティブ体験</h3>
             <p>アニメーション、3D、スクロール演出で、記憶に残るデジタル体験を創出。</p>
-            <ul class="service-tags">
-              <li>Motion Design</li>
-              <li>WebGL / 3D</li>
-              <li>Micro UX</li>
-            </ul>
+            <ul><li>Motion Design</li><li>WebGL / 3D</li><li>Micro UX</li></ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Process -->
     <section class="section process" id="process">
       <div class="container">
-        <div class="section-intro">
-          <span class="section-label reveal-up">04 — Process</span>
-          <h2 class="section-heading reveal-up">
-            確かな成果へ導く<br>
-            <span class="gradient-text">4つのステップ。</span>
-          </h2>
-        </div>
-        <ol class="process-steps">
-          <li class="process-step reveal-up" style="--delay: 0.05s">
-            <span class="step-num">01</span>
-            <div class="step-content">
+        <header class="section-head reveal-up">
+          <span class="section-num">04</span>
+          <div>
+            <p class="section-label">Process</p>
+            <h2 class="section-title">確かな成果へ導く<br><span class="title-accent">4 つのステップ。</span></h2>
+          </div>
+        </header>
+        <ol class="process-timeline">
+          <li class="process-item reveal-up" style="--delay: 0.05s">
+            <span class="process-step">01</span>
+            <div>
               <h3>Discover</h3>
               <p>ビジネス目標とユーザー課題を深く理解し、プロジェクトの方向性を定義します。</p>
             </div>
           </li>
-          <li class="process-step reveal-up" style="--delay: 0.15s">
-            <span class="step-num">02</span>
-            <div class="step-content">
+          <li class="process-item reveal-up" style="--delay: 0.12s">
+            <span class="process-step">02</span>
+            <div>
               <h3>Design</h3>
               <p>ワイヤーフレームからビジュアルデザインまで、段階的にブラッシュアップ。</p>
             </div>
           </li>
-          <li class="process-step reveal-up" style="--delay: 0.25s">
-            <span class="step-num">03</span>
-            <div class="step-content">
+          <li class="process-item reveal-up" style="--delay: 0.19s">
+            <span class="process-step">03</span>
+            <div>
               <h3>Build</h3>
               <p>最新技術で高品質なコードを実装。パフォーマンスとアクセシビリティを重視。</p>
             </div>
           </li>
-          <li class="process-step reveal-up" style="--delay: 0.35s">
-            <span class="step-num">04</span>
-            <div class="step-content">
+          <li class="process-item reveal-up" style="--delay: 0.26s">
+            <span class="process-step">04</span>
+            <div>
               <h3>Evolve</h3>
               <p>データに基づく改善提案と継続的なメンテナンスで、長期的な成長を支援。</p>
             </div>
@@ -350,44 +340,40 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="section voices" id="voices">
       <div class="container">
-        <div class="section-intro">
-          <span class="section-label reveal-up">05 — Voices</span>
-          <h2 class="section-heading reveal-up">
-            クライアントの<br>
-            <span class="gradient-text">声。</span>
-          </h2>
-        </div>
-        <div class="voices-grid">
-          <blockquote class="voice-card reveal-up" style="--delay: 0.05s">
-            <div class="voice-stars">★★★★★</div>
-            <p>「デザインの美しさだけでなく、ビジネス成果まで考えてくれる rare なパートナーです。リニューアル後の問い合わせ数が3倍になりました。」</p>
+        <header class="section-head reveal-up">
+          <span class="section-num">05</span>
+          <div>
+            <p class="section-label">Voices</p>
+            <h2 class="section-title">クライアントの<br><span class="title-accent">声。</span></h2>
+          </div>
+        </header>
+        <div class="voices-list">
+          <blockquote class="voice-item reveal-up" style="--delay: 0.05s">
+            <p>「デザインの美しさだけでなく、ビジネス成果まで考えてくれる rare なパートナーです。リニューアル後の問い合わせ数が 3 倍になりました。」</p>
             <footer>
-              <div class="voice-avatar" style="--color: #3ecf8e;">Y.K.</div>
+              <span class="voice-initials">YK</span>
               <div>
                 <cite>木村 裕子</cite>
                 <span>代表取締役 / 緑風テック</span>
               </div>
             </footer>
           </blockquote>
-          <blockquote class="voice-card reveal-up" style="--delay: 0.15s">
-            <div class="voice-stars">★★★★★</div>
+          <blockquote class="voice-item reveal-up" style="--delay: 0.12s">
             <p>「細部へのこだわりが素晴らしく、チーム全体のプロダクト品質が一段上がりました。コミュニケーションも非常にスムーズでした。」</p>
             <footer>
-              <div class="voice-avatar" style="--color: #6b8cff;">T.S.</div>
+              <span class="voice-initials">TS</span>
               <div>
                 <cite>佐藤 健太</cite>
                 <span>プロダクトマネージャー / FlowDesk</span>
               </div>
             </footer>
           </blockquote>
-          <blockquote class="voice-card reveal-up" style="--delay: 0.25s">
-            <div class="voice-stars">★★★★★</div>
+          <blockquote class="voice-item reveal-up" style="--delay: 0.19s">
             <p>「職人の想いをデジタルで表現する難しい依頼でしたが、期待を大きく超えるサイトが完成。スタッフ全員が感動しています。」</p>
             <footer>
-              <div class="voice-avatar" style="--color: #f0c987;">M.A.</div>
+              <span class="voice-initials">MA</span>
               <div>
                 <cite>秋山 美咲</cite>
                 <span>オーナー / 工房 灯</span>
@@ -398,54 +384,33 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section class="section contact" id="contact">
       <div class="container">
-        <div class="contact-layout">
-          <div class="contact-info">
-            <span class="section-label reveal-up">06 — Contact</span>
-            <h2 class="contact-heading reveal-up">
-              次のプロジェクトを、<br>
-              <span class="gradient-text">一緒に。</span>
-            </h2>
-            <p class="contact-lead reveal-up">
-              ご相談・お見積りは無料です。まずはお気軽にお問い合わせください。
-              通常2営業日以内にご返信いたします。
-            </p>
-            <div class="contact-details reveal-up">
-              <div class="contact-detail">
-                <span class="detail-label">Email</span>
-                <span>hello@suigo.studio</span>
-              </div>
-              <div class="contact-detail">
-                <span class="detail-label">Location</span>
-                <span>東京都渋谷区</span>
-              </div>
+        <div class="contact-panel reveal-up">
+          <div class="contact-copy">
+            <span class="section-num">06</span>
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">次のプロジェクトを、<br><span class="title-accent">一緒に。</span></h2>
+            <p class="contact-lead">ご相談・お見積りは無料です。通常 2 営業日以内にご返信いたします。</p>
+            <div class="contact-info">
+              <div><span>Email</span><p>hello@suigo.studio</p></div>
+              <div><span>Location</span><p>東京都渋谷区</p></div>
             </div>
           </div>
-          <form class="contact-form reveal-up" id="contact-form" style="--delay: 0.1s">
+          <form class="contact-form" id="contact-form">
             <div class="field">
-              <input type="text" id="name" placeholder=" " required autocomplete="name" />
               <label for="name">お名前</label>
-              <span class="field-line"></span>
+              <input type="text" id="name" required autocomplete="name" />
             </div>
             <div class="field">
-              <input type="email" id="email" placeholder=" " required autocomplete="email" />
               <label for="email">メールアドレス</label>
-              <span class="field-line"></span>
+              <input type="email" id="email" required autocomplete="email" />
             </div>
             <div class="field">
-              <textarea id="message" rows="4" placeholder=" " required></textarea>
               <label for="message">プロジェクトの概要</label>
-              <span class="field-line"></span>
+              <textarea id="message" rows="4" required></textarea>
             </div>
-            <button type="submit" class="btn-primary magnetic-btn" data-strength="15">
-              <span>送信する</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-              </svg>
-              <div class="btn-shine"></div>
-            </button>
+            <button type="submit" class="btn-primary"><span>送信する</span></button>
           </form>
         </div>
       </div>
@@ -453,68 +418,37 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a href="#" class="logo">
-            <span class="logo-mark">翠</span>
-            <span class="logo-name">SUIGO</span>
-          </a>
-          <p>心に残るデジタル体験を創造するクリエイティブスタジオ。</p>
-        </div>
-        <div class="footer-nav">
-          <div class="footer-col">
-            <h4>スタジオ</h4>
-            <a href="#about">私たちについて</a>
-            <a href="#works">制作実績</a>
-            <a href="#services">サービス</a>
-            <a href="#voices">お客様の声</a>
-            <a href="#contact">お問い合わせ</a>
-          </div>
-          <div class="footer-col">
-            <h4>ソーシャル</h4>
-            <a href="#">X (Twitter)</a>
-            <a href="#">Instagram</a>
-            <a href="#">note</a>
-            <a href="#">GitHub</a>
-          </div>
-        </div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">翠</span>
+          <span class="logo-text"><span class="logo-name">SUIGO</span></span>
+        </a>
+        <p>心に残るデジタル体験を創造するクリエイティブスタジオ。</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 翠光 SUIGO Studio. All rights reserved.</p>
-        <p>Designed with care in Tokyo</p>
-      </div>
+      <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="#about">About</a>
+        <a href="#works">Works</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 翠光 SUIGO Studio</p>
     </div>
   </footer>
 
-  <!-- Project Modal -->
   <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
     <div class="modal-backdrop" id="modal-backdrop"></div>
     <div class="modal-panel">
-      <button class="modal-close" id="modal-close" aria-label="閉じる">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M18 6L6 18M6 6l12 12"/>
-        </svg>
-      </button>
+      <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
       <span class="modal-tag" id="modal-tag"></span>
       <h3 class="modal-title" id="modal-title"></h3>
       <p class="modal-desc" id="modal-desc"></p>
-      <div class="modal-stats" id="modal-stats"></div>
-      <a href="#contact" class="btn-primary modal-cta">
-        <span>似たプロジェクトを相談する</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path d="M7 17L17 7M17 7H7M17 7V17"/>
-        </svg>
-      </a>
+      <p class="modal-stats" id="modal-stats"></p>
+      <a href="#contact" class="btn-primary modal-cta"><span>似たプロジェクトを相談する</span></a>
     </div>
   </div>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-      <path d="M12 19V5M5 12l7-7 7 7"/>
-    </svg>
-  </button>
+  <button class="back-to-top" id="back-to-top" aria-label="ページトップへ戻る">↑</button>
 
   <script type="module" src="/src/main.js"></script>
 </body>
